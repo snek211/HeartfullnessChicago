@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartfulness Chicago — Free Meditation for Inner Peace & Balance</title>
+<meta name="description" content="Join Chicago's Heartfulness meditation community. Free group meditation sessions, workshops, and community events across Chicago, Lombard, and beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CHICAGO HEARTFULNESS — TEAL BRAND PALETTE
+   ============================================ */
+:root {
+  --hf-teal: #00838F;
+  --hf-teal-light: #26A0AA;
+  --hf-teal-dark: #005F6B;
+  --hf-teal-deep: #004D56;
+  --hf-cyan: #4DD0E1;
+  --hf-gold: #C89632;
+  --hf-gold-light: #E0B050;
+  --hf-warm: #F5F0E8;
+
+  --white: #FFFFFF;
+  --off-white: #FAFAF8;
+  --g50: #F5F5F2;
+  --g100: #ECEAE5;
+  --g200: #D4D0C8;
+  --g300: #B0AAA0;
+  --g400: #8A8478;
+  --g500: #6E685E;
+  --g600: #524E46;
+  --g700: #3A3632;
+  --g800: #262320;
+  --g900: #1A1816;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --nav-h: 68px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --max-w: 1180px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:var(--font-body); color:var(--g800); background:var(--off-white); overflow-x:hidden; line-height:1.65; }
+h1,h2,h3,h4 { font-family:var(--font-display); font-weight:500; line-height:1.2; color:var(--g900); }
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; }
+button { border:none; background:none; cursor:pointer; font-family:inherit; }
+ul { list-style:none; }
+.container { max-width:var(--max-w); margin:0 auto; padding:0 28px; }
+
+/* ============================================
+   LOADER
+   ============================================ */
+.loader{position:fixed;inset:0;z-index:10000;background:var(--off-white);display:flex;align-items:center;justify-content:center;transition:opacity .6s var(--ease),visibility .6s}
+.loader.out{opacity:0;visibility:hidden;pointer-events:none}
+.loader svg{animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.06);opacity:1}}
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+.page{display:none;opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease),transform .4s var(--ease);min-height:80vh}
+.page.on{display:block}
+.page.show{opacity:1;transform:translateY(0)}
+
+/* ============================================
+   NAV
+   ============================================ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);transition:background .3s,box-shadow .3s,backdrop-filter .3s}
+nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.nav-in{max-width:var(--max-w);margin:0 auto;padding:0 28px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo:hover{opacity:.85}
+.logo svg{height:38px;width:auto}
+.logo-text{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--g800);letter-spacing:-.01em}
+.logo-text .c{color:var(--hf-teal)}
+.nav-menu{display:flex;align-items:center;gap:2px}
+.nv{padding:8px 16px;font-size:.88rem;font-weight:500;color:var(--g500);border-radius:8px;transition:all .25s;cursor:pointer}
+.nv:hover,.nv.on{color:var(--hf-teal);background:rgba(0,131,143,.06)}
+.nv.on{position:relative}
+.nv.on::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:18px;height:2px;background:var(--hf-teal);border-radius:2px}
+.nv-cta{margin-left:10px;padding:9px 22px;font-size:.86rem;font-weight:600;color:var(--white);background:var(--hf-teal);border-radius:10px;transition:all .3s;cursor:pointer}
+.nv-cta:hover{background:var(--hf-teal-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,131,143,.3)}
+.mob-btn{display:none;flex-direction:column;gap:5px;padding:8px}
+.mob-btn span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px;transition:all .3s}
+.mob-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.mob-btn.open span:nth-child(2){opacity:0}
+.mob-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(250,250,248,.98);backdrop-filter:blur(30px);padding:32px 28px;z-index:999;opacity:0;transform:translateY(-16px);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.mob-menu.open{display:flex;flex-direction:column;gap:6px;opacity:1;transform:translateY(0)}
+.mob-menu .nv{font-size:1.2rem;padding:14px 0;border-bottom:1px solid var(--g100);border-radius:0}
+.mob-menu .nv-cta{margin:16px 0 0;text-align:center;padding:14px;font-size:1rem;border-radius:12px}
+
+/* ============================================
+   SHARED
+   ============================================ */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--hf-teal);margin-bottom:14px}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--hf-teal);border-radius:2px}
+.heading{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:16px;letter-spacing:-.02em}
+.subtext{font-size:1.05rem;color:var(--g400);max-width:540px;font-weight:300;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;font-size:.9rem;font-weight:600;border-radius:11px;transition:all .3s var(--ease);cursor:pointer}
+.btn-p{background:var(--hf-teal);color:var(--white)}
+.btn-p:hover{background:var(--hf-teal-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,131,143,.3)}
+.btn-o{border:1.5px solid var(--g200);color:var(--g700);background:var(--white)}
+.btn-o:hover{border-color:var(--hf-teal);color:var(--hf-teal);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.btn-w{background:var(--white);color:var(--hf-teal)}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.3)}
+.sr{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.sr.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* Photo with overlay caption */
+.photo-frame{border-radius:16px;overflow:hidden;position:relative}
+.photo-frame img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.photo-frame:hover img{transform:scale(1.03)}
+
+/* ============================================
+   HOME — HERO
+   ============================================ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:var(--nav-h)}
+.hero-bg{position:absolute;inset:0}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(155deg,#f2f6f5 0%,#dfeeed 25%,#c8e0de 45%,#aad0ce 60%,#8ec4c0 80%,#70b4b0 100%)}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35}
+.o1{width:480px;height:480px;background:var(--hf-cyan);top:-8%;right:-4%;animation:orb 20s ease-in-out infinite}
+.o2{width:380px;height:380px;background:var(--hf-gold-light);bottom:-8%;left:12%;animation:orb 16s ease-in-out infinite 4s}
+.o3{width:260px;height:260px;background:#80DEEA;top:45%;left:55%;animation:orb 18s ease-in-out infinite 8s}
+@keyframes orb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-18px) scale(1.04)}66%{transform:translate(-18px,12px) scale(.96)}}
+.hero-inner{position:relative;z-index:2;max-width:var(--max-w);margin:0 auto;padding:70px 28px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hero-txt{max-width:520px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,131,143,.08);border:1px solid rgba(0,131,143,.15);border-radius:50px;padding:6px 14px 6px 8px;font-size:.76rem;font-weight:600;color:var(--hf-teal);margin-bottom:24px;opacity:0;animation:fu .8s var(--ease) .2s forwards}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--hf-teal);animation:dp 2s ease-in-out infinite}
+@keyframes dp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero h1{font-size:clamp(2.6rem,4.8vw,3.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:22px;opacity:0;animation:fu .8s var(--ease) .35s forwards}
+.hero h1 .hl{color:var(--hf-teal);font-style:italic}
+.hero-desc{font-size:1.08rem;color:var(--g600);font-weight:300;line-height:1.75;margin-bottom:32px;max-width:440px;opacity:0;animation:fu .8s var(--ease) .5s forwards}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fu .8s var(--ease) .65s forwards}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero-vis{position:relative;opacity:0;animation:fu 1s var(--ease) .5s forwards}
+.hero-img{position:relative;width:100%;max-width:460px;aspect-ratio:3/4;border-radius:20px;overflow:hidden;box-shadow:0 36px 72px rgba(0,0,0,.1),0 14px 28px rgba(0,0,0,.05)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+/* Floating cards */
+.fcard{position:absolute;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-radius:14px;padding:14px 18px;box-shadow:0 10px 36px rgba(0,0,0,.07);display:flex;align-items:center;gap:10px;animation:cf 6s ease-in-out infinite;z-index:3}
+.fcard.ft{top:8%;right:-8%}.fcard.fb{bottom:12%;left:-8%;animation-delay:3s}
+@keyframes cf{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.fi{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.fi.teal{background:rgba(0,131,143,.1)}.fi.gold{background:rgba(200,150,50,.1)}
+.fc-t{font-size:.8rem}.fc-t strong{display:block;font-weight:600;color:var(--g800)}.fc-t span{color:var(--g400);font-weight:400}
+.scroll-h{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fu 1s var(--ease) 1.2s forwards}
+.scroll-h span{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--g300)}
+.smouse{width:20px;height:32px;border:2px solid var(--g300);border-radius:11px;position:relative}
+.smouse::after{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:3px;height:5px;background:var(--hf-teal);border-radius:3px;animation:sd 1.8s ease-in-out infinite}
+@keyframes sd{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(12px)}}
+
+/* ============================================
+   HOME — FEATURES
+   ============================================ */
+.features{padding:72px 0;background:var(--white);border-top:1px solid var(--g100);border-bottom:1px solid var(--g100)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.feat{text-align:center;padding:24px 14px}
+.feat-ic{width:52px;height:52px;margin:0 auto 14px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.feat:nth-child(1) .feat-ic{background:rgba(0,131,143,.08)}
+.feat:nth-child(2) .feat-ic{background:rgba(200,150,50,.08)}
+.feat:nth-child(3) .feat-ic{background:rgba(200,100,120,.08)}
+.feat:nth-child(4) .feat-ic{background:rgba(120,100,180,.08)}
+.feat h4{font-size:.95rem;margin-bottom:4px;font-family:var(--font-body);font-weight:600}
+.feat p{font-size:.82rem;color:var(--g400);font-weight:300}
+
+/* ============================================
+   HOME — COMMUNITY GALLERY
+   ============================================ */
+.community{padding:100px 0}
+.comm-gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:16px;margin-top:44px}
+.comm-gallery .photo-frame{aspect-ratio:4/3}
+.comm-gallery .photo-frame:first-child{grid-row:span 2;aspect-ratio:auto}
+.comm-gallery .photo-frame:first-child img{height:100%}
+
+/* ============================================
+   HOME — VIDEO
+   ============================================ */
+.vid-section{padding:100px 0;background:var(--g900);color:var(--white);position:relative;overflow:hidden}
+.vid-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(0,131,143,.12),transparent 70%)}
+.vid-section .eyebrow{color:var(--hf-gold-light)}.vid-section .eyebrow::before{background:var(--hf-gold-light)}
+.vid-section .heading{color:var(--white)}
+.vid-section .subtext{color:rgba(255,255,255,.5)}
+.vid-wrap{margin-top:44px;max-width:860px;margin-left:auto;margin-right:auto;border-radius:18px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 28px 56px rgba(0,0,0,.4)}
+.vid-wrap iframe{width:100%;height:100%;border:none}
+
+/* ============================================
+   HOME — QUOTE
+   ============================================ */
+.quote-s{padding:90px 0;text-align:center;position:relative}
+.quote-s::before{content:'"';position:absolute;top:16px;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-size:10rem;color:var(--g100);line-height:1;pointer-events:none}
+.quote-body{max-width:680px;margin:0 auto;position:relative}
+.quote-body blockquote{font-family:var(--font-display);font-size:clamp(1.25rem,2.4vw,1.75rem);font-style:italic;color:var(--g700);line-height:1.6;margin-bottom:20px}
+.quote-who{font-size:.82rem;font-weight:600;color:var(--hf-teal);text-transform:uppercase;letter-spacing:.1em}
+
+/* ============================================
+   HOME — CTA
+   ============================================ */
+.cta-s{padding:100px 0 90px}
+.cta-card{background:linear-gradient(135deg,var(--hf-teal),var(--hf-teal-deep));border-radius:22px;padding:72px 56px;display:flex;align-items:center;justify-content:space-between;gap:36px;color:var(--white);position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:-50%;right:-20%;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.04)}
+.cta-card h2{font-size:clamp(1.7rem,3vw,2.4rem);color:var(--white);margin-bottom:10px}
+.cta-card p{color:rgba(255,255,255,.72);font-weight:300;max-width:400px}
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+.pg-head{padding:calc(var(--nav-h) + 72px) 0 72px;text-align:center;background:var(--g50);border-bottom:1px solid var(--g100)}
+.pg-head .heading{margin-bottom:10px}
+.pg-head p{font-size:1.05rem;color:var(--g400);font-weight:300;max-width:480px;margin:0 auto}
+
+/* ============================================
+   ABOUT PAGE
+   ============================================ */
+.about-story{padding:100px 0}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.story-img{border-radius:18px;overflow:hidden;box-shadow:0 18px 54px rgba(0,0,0,.07);aspect-ratio:4/3}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-text h3{font-size:1.7rem;margin-bottom:18px}
+.story-text p{color:var(--g500);font-weight:300;line-height:1.75;margin-bottom:14px}
+
+/* Values grid */
+.vals{padding:100px 0;background:var(--g50)}
+.vals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.vcard{background:var(--white);border-radius:18px;padding:36px 28px;border:1px solid var(--g100);transition:all .3s var(--ease)}
+.vcard:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(0,0,0,.05);border-color:transparent}
+.vcard-ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:18px}
+.vcard h4{font-family:var(--font-body);font-weight:600;font-size:1rem;margin-bottom:8px}
+.vcard p{font-size:.88rem;color:var(--g400);font-weight:300;line-height:1.7}
+
+/* Community in action */
+.in-action{padding:100px 0}
+.action-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.action-item{border-radius:14px;overflow:hidden;aspect-ratio:1;position:relative}
+.action-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.action-item:hover img{transform:scale(1.06)}
+.action-item .overlay{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,.55));color:white;font-size:.78rem;font-weight:500;opacity:0;transition:opacity .3s}
+.action-item:hover .overlay{opacity:1}
+/* Wide items */
+.action-item.wide{grid-column:span 2;aspect-ratio:2/1}
+
+/* News */
+.news-s{padding:100px 0;background:var(--g50)}
+.news-card{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;background:var(--white);border-radius:18px;padding:36px;border:1px solid var(--g100);margin-top:44px}
+.news-img{width:320px;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.news-img img{width:100%;height:auto}
+.news-text h3{font-size:1.3rem;margin-bottom:10px}
+.news-text p{color:var(--g500);font-weight:300;line-height:1.7;margin-bottom:14px;font-size:.92rem}
+.news-tag{display:inline-block;padding:4px 12px;background:rgba(0,131,143,.08);color:var(--hf-teal);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;border-radius:6px}
+
+/* ============================================
+   MEDITATION PAGE
+   ============================================ */
+.med-hero{padding:calc(var(--nav-h) + 56px) 0 72px;text-align:center;background:linear-gradient(180deg,#eef4f3,var(--off-white))}
+.prac-section{padding:100px 0}
+.prac-row{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-bottom:90px}
+.prac-row:last-child{margin-bottom:0}
+.prac-row.rev .prac-vis{order:-1}
+.prac-vis{border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 14px 44px rgba(0,0,0,.05)}
+.prac-vis img{width:100%;height:100%;object-fit:cover}
+.prac-num{font-family:var(--font-display);font-size:3.2rem;font-weight:700;color:var(--g100);margin-bottom:6px}
+.prac-info h3{font-size:1.7rem;margin-bottom:14px}
+.prac-info p{color:var(--g500);font-weight:300;line-height:1.75;margin-bottom:10px}
+.prac-checks{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.prac-check{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--g600)}
+.prac-check svg{flex-shrink:0;color:var(--hf-teal)}
+
+/* Videos grid on meditation page */
+.vids-grid{padding:100px 0;background:var(--g900);color:white}
+.vids-grid .eyebrow{color:var(--hf-gold-light)}.vids-grid .eyebrow::before{background:var(--hf-gold-light)}
+.vids-grid .heading{color:white}
+.vids-grid .subtext{color:rgba(255,255,255,.5)}
+.vid-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.vid-card{border-radius:16px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.vid-card iframe{width:100%;height:100%;border:none}
+
+/* Research */
+.research{padding:100px 0;background:var(--g50);text-align:center}
+.research-logos{display:flex;align-items:center;justify-content:center;gap:44px;margin-top:36px;flex-wrap:wrap;opacity:.45}
+.research-logos span{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--g400)}
+
+/* ============================================
+   SESSIONS PAGE
+   ============================================ */
+.sess-hero{padding:calc(var(--nav-h) + 56px) 0 56px;text-align:center;background:linear-gradient(180deg,var(--g50),var(--off-white))}
+.sched{padding:72px 0 100px}
+.sched-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.scard{background:var(--white);border-radius:18px;padding:32px 24px;border:1px solid var(--g100);transition:all .3s var(--ease);position:relative;overflow:hidden}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--hf-teal)}
+.scard:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(0,0,0,.06);border-color:transparent}
+.scard .badge{display:inline-block;padding:4px 10px;background:rgba(0,131,143,.08);color:var(--hf-teal);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;border-radius:6px;margin-bottom:14px}
+.scard h3{font-family:var(--font-body);font-weight:600;font-size:1.05rem;margin-bottom:6px}
+.scard .stime{font-family:var(--font-display);font-size:1.7rem;font-weight:600;color:var(--hf-teal);margin-bottom:10px}
+.scard p{font-size:.86rem;color:var(--g400);font-weight:300;line-height:1.65}
+.scard .sloc{margin-top:18px;padding-top:14px;border-top:1px solid var(--g100);display:flex;align-items:flex-start;gap:7px;font-size:.8rem;color:var(--g400)}
+.scard .sloc svg{flex-shrink:0;margin-top:1px}
+
+.zoom-bar{margin-top:28px;background:var(--white);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:18px;border:1px solid var(--g100)}
+.zoom-ic{width:48px;height:48px;border-radius:12px;background:rgba(0,131,143,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.zoom-bar h4{font-family:var(--font-body);font-weight:600;font-size:.98rem;margin-bottom:3px}
+.zoom-bar p{font-size:.86rem;color:var(--g400);font-weight:300}
+
+/* Locations */
+.locs{padding:0 0 100px}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:44px}
+.loc-list{display:flex;flex-direction:column;gap:14px}
+.lcard{background:var(--white);border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px;border:1px solid var(--g100);transition:all .3s}
+.lcard:hover{box-shadow:0 8px 22px rgba(0,0,0,.04);transform:translateX(3px)}
+.lm{width:42px;height:42px;border-radius:10px;background:var(--hf-teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm svg{color:white}
+.lcard h4{font-family:var(--font-body);font-size:.92rem;font-weight:600;margin-bottom:1px}
+.lcard p{font-size:.8rem;color:var(--g400)}
+.map-f{border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05);min-height:340px}
+.map-f iframe{width:100%;height:100%;min-height:340px;border:none}
+
+/* Contact */
+.contact{padding:100px 0;background:var(--g50)}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.con-info h3{font-size:1.5rem;margin-bottom:14px}
+.con-info>p{color:var(--g500);font-weight:300;margin-bottom:32px}
+.cd{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.cd-ic{width:42px;height:42px;border-radius:10px;background:rgba(0,131,143,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cd-ic svg{color:var(--hf-teal)}
+.cd .cd-l{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400)}
+.cd .cd-v{font-weight:500;color:var(--g700)}
+.soc-row{display:flex;gap:9px;margin-top:28px}
+.soc-a{width:42px;height:42px;border-radius:10px;border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.soc-a:hover{background:var(--hf-teal);border-color:var(--hf-teal)}
+.soc-a:hover svg{fill:white}
+.soc-a svg{width:17px;fill:var(--g500)}
+.app-card{background:var(--white);border-radius:18px;padding:36px;border:1px solid var(--g100);text-align:center}
+.app-card h4{font-size:1.15rem;margin-bottom:6px}
+.app-card>p{color:var(--g400);font-size:.88rem;font-weight:300;margin-bottom:22px}
+.app-btns{display:flex;gap:10px;justify-content:center}
+.app-b{display:flex;align-items:center;gap:8px;background:var(--g900);color:white;padding:9px 16px;border-radius:9px;transition:all .3s;font-size:.78rem}
+.app-b:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.2)}
+.app-b svg{width:20px;height:20px}
+.app-b strong{font-size:.88rem}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer{background:var(--g900);color:rgba(255,255,255,.6);padding:72px 0 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:56px}
+.ft-brand{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:10px}
+.ft-brand .c{color:var(--hf-teal-light)}
+.ft-desc{font-size:.86rem;line-height:1.7;max-width:280px;margin-bottom:16px}
+footer h5{color:var(--white);font-family:var(--font-body);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px}
+footer ul li{margin-bottom:9px}
+footer ul a{font-size:.86rem;color:rgba(255,255,255,.4);transition:color .2s}
+footer ul a:hover{color:var(--hf-teal-light)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:.76rem;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px}
+.ft-bot a{color:rgba(255,255,255,.25)}.ft-bot a:hover{color:var(--hf-teal-light)}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-txt{max-width:580px;margin:0 auto}.hero-desc{max-width:100%}.hero-btns{justify-content:center}
+  .hero-vis{max-width:380px;margin:0 auto}.fcard{display:none}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .comm-gallery{grid-template-columns:repeat(2,1fr)}.comm-gallery .photo-frame:first-child{grid-row:auto}
+  .story-grid,.prac-row,.con-grid,.news-card{grid-template-columns:1fr;gap:36px}
+  .prac-row.rev .prac-vis{order:0}
+  .sched-grid{grid-template-columns:repeat(2,1fr)}
+  .vals-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .cta-card{flex-direction:column;text-align:center;padding:56px 36px}
+  .action-gallery{grid-template-columns:repeat(2,1fr)}.action-item.wide{grid-column:span 1}
+  .news-img{width:100%}
+  .vid-cards{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-menu{display:none}.mob-btn{display:flex}
+  .feat-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .sched-grid,.vals-grid{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr}
+  .comm-gallery,.action-gallery{grid-template-columns:1fr}
+  .zoom-bar{flex-direction:column;text-align:center}
+  .scroll-h{display:none}
+  .ft-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .feat-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .app-btns{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="ldr">
+  <img src="images/logo.png" alt="Heartfulness" style="height:52px;width:auto;animation:pulse 1.2s ease-in-out infinite;">
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a class="logo" onclick="go('home')">
+      <img src="images/logo.png" alt="Heartfulness Sahaj Marg Meditation" style="height:38px;width:auto;">
+    </a>
+    <div class="nav-menu" id="nm">
+      <span class="nv on" onclick="go('home')">Home</span>
+      <span class="nv" onclick="go('about')">About</span>
+      <span class="nv" onclick="go('meditation')">Meditation</span>
+      <span class="nv" onclick="go('sessions')">Sessions</span>
+      <span class="nv" onclick="go('community')">Community</span>
+      <span class="nv-cta" onclick="go('sessions')">Join Free Session</span>
+    </div>
+    <button class="mob-btn" id="mb" onclick="togMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mm">
+  <span class="nv" onclick="go('home');closeMob()">Home</span>
+  <span class="nv" onclick="go('about');closeMob()">About</span>
+  <span class="nv" onclick="go('meditation');closeMob()">Meditation</span>
+  <span class="nv" onclick="go('sessions');closeMob()">Sessions</span>
+  <span class="nv" onclick="go('community');closeMob()">Community</span>
+  <span class="nv-cta" onclick="go('sessions');closeMob()">Join Free Session</span>
+</div>
+
+<!-- ============================
+     PAGE: HOME
+     ============================ -->
+<div class="page on" id="p-home">
+
+  <section class="hero">
+    <div class="hero-bg"><div class="hero-grad"></div><div class="hero-orb o1"></div><div class="hero-orb o2"></div><div class="hero-orb o3"></div></div>
+    <div class="hero-inner">
+      <div class="hero-txt">
+        <div class="hero-badge"><span class="badge-dot"></span>Free meditation — always</div>
+        <h1>Find Joy, Peace &amp; <span class="hl">Inner Balance</span></h1>
+        <p class="hero-desc">We're a community of meditators across Chicagoland — gathering every Sunday, hosting free workshops at local libraries, and welcoming anyone who wants to experience the heart. No cost, no catch.</p>
+        <div class="hero-btns">
+          <a class="btn btn-p" onclick="go('sessions')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Join This Sunday
+          </a>
+          <a class="btn btn-o" onclick="go('meditation')">Explore the Practice</a>
+        </div>
+      </div>
+      <div class="hero-vis">
+        <div class="hero-img">
+          <img src="images/community-fair-2.jpg" alt="Chicago Heartfulness community — free relaxation at community fair">
+        </div>
+        <div class="fcard ft">
+          <div class="fi teal">🧘</div>
+          <div class="fc-t"><strong>Sunday Meditation</strong><span>9 AM — Chicago</span></div>
+        </div>
+        <div class="fcard fb">
+          <div class="fi gold">🏡</div>
+          <div class="fc-t"><strong>3 Local Centers</strong><span>Chicago · Lombard · Lincolnshire</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-h"><div class="smouse"></div><span>Scroll</span></div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="feat-grid">
+        <div class="feat sr"><div class="feat-ic">🌿</div><h4>Relaxation</h4><p>Release tension, calm the body</p></div>
+        <div class="feat sr d1"><div class="feat-ic">💛</div><h4>Meditation</h4><p>Dive deep with yogic transmission</p></div>
+        <div class="feat sr d2"><div class="feat-ic">🌸</div><h4>Cleaning</h4><p>Detox the mind, feel lighter</p></div>
+        <div class="feat sr d3"><div class="feat-ic">✨</div><h4>Inner Connect</h4><p>Listen to your heart's voice</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY GALLERY — Real Chicago photos -->
+  <section class="community">
+    <div class="container">
+      <div class="sr" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">Our Chicago Community</div>
+        <h2 class="heading">More Than Meditation — We're a Family</h2>
+        <p class="subtext" style="margin:0 auto">From community fairs to library workshops, from Sunday mornings to International Yoga Day — here's what Heartfulness looks like in Chicago.</p>
+      </div>
+      <div class="comm-gallery">
+        <div class="photo-frame sr"><img src="images/group-photo.jpg" alt="Heartfulness Chicago community group photo"></div>
+        <div class="photo-frame sr d1"><img src="images/community-walk.jpg" alt="Chicago Heartfulness community walk with families"></div>
+        <div class="photo-frame sr d2"><img src="images/outdoor-booth.jpg" alt="Free relaxation booth at community fair"></div>
+        <div class="photo-frame sr d3"><img src="images/outdoor-group.jpg" alt="Heartfulness Chicago outdoor garden gathering"></div>
+        <div class="photo-frame sr d4"><img src="images/trainers-formal.jpg" alt="Heartfulness Chicago trainers"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="vid-section">
+    <div class="container" style="position:relative;z-index:1;text-align:center">
+      <div class="sr">
+        <div class="eyebrow" style="justify-content:center">Experience Heartfulness</div>
+        <h2 class="heading">See What Draws People In</h2>
+        <p class="subtext" style="margin:0 auto">Discover what makes Heartfulness meditation unique — a practice supported by yogic transmission from the very first session.</p>
+      </div>
+      <div class="vid-wrap sr d1">
+        <iframe src="https://www.youtube.com/embed/f37wdNIPB_g" title="Introduction to Heartfulness" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-s">
+    <div class="container">
+      <div class="quote-body sr">
+        <blockquote>When we meditate on the heart, we feel one with nature and develop intuitive understanding. Meditation heals and transforms us.</blockquote>
+        <p class="quote-who">Kamlesh D. Patel (Daaji) — Global Guide of Heartfulness</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAKEFRONT FEATURE — Chicago skyline / lakefront meditation moment -->
+  <section style="padding:0 0 100px">
+    <div class="container">
+      <div class="sr" style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:21/8;box-shadow:0 20px 60px rgba(0,0,0,.1);">
+        <img src="images/outdoor-booth.jpg" alt="Heartfulness community at outdoor event in Chicago" style="width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,50,55,.7) 0%,rgba(0,50,55,.3) 50%,transparent 100%);display:flex;align-items:center;padding:60px;">
+          <div style="color:white;max-width:460px;">
+            <p style="font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#80DEEA;margin-bottom:12px;">A Moment from Our Community</p>
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);color:white;font-weight:500;line-height:1.3;margin-bottom:16px;">Stillness finds you<br><em>wherever you are</em></h2>
+            <p style="color:rgba(255,255,255,.75);font-weight:300;font-size:1rem;line-height:1.7;">Our community meditates everywhere — from our centers in Lombard and Chicago, to lakefronts, libraries, and living rooms across Chicagoland.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-s">
+    <div class="container">
+      <div class="cta-card sr">
+        <div><h2>Your First Session Is This Sunday</h2><p>9:00 AM at our Chicago Center. No signup needed — just show up with an open heart. We'll guide you through everything.</p></div>
+        <div><a class="btn btn-w" onclick="go('sessions')">Get Details</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================
+     PAGE: ABOUT
+     ============================ -->
+<div class="page" id="p-about">
+  <div class="pg-head">
+    <div class="container">
+      <div class="eyebrow" style="justify-content:center">About Us</div>
+      <h1 class="heading">Heart-Based Meditation,<br>Rooted in Chicago</h1>
+      <p>We're part of a global movement — but our roots are right here in the neighborhoods, libraries, and parks of Chicagoland.</p>
+    </div>
+  </div>
+
+  <section class="about-story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-img sr">
+          <img src="images/classroom-talk.jpg" alt="Heartfulness Chicago community gathering">
+        </div>
+        <div class="story-text sr d1">
+          <h3>What is Heartfulness?</h3>
+          <p>Heartfulness is a practical approach to heart-based meditation rooted in the ancient tradition of Raja Yoga. It's been refined and simplified for modern everyday life — anyone can learn it regardless of background, culture, or belief.</p>
+          <p>What makes Heartfulness unique is pranahuti — yogic transmission — a subtle energy offered by certified trainers during every session. It takes your meditation beyond what the mind can achieve alone, allowing you to experience deep states of consciousness from the very first sitting.</p>
+          <p>Heartfulness Chicago is a chapter of the global Heartfulness Institute — a not-for-profit organization active in over 130 countries. Every session, workshop, and program we offer is completely free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vals">
+    <div class="container" style="text-align:center">
+      <div class="sr">
+        <div class="eyebrow" style="justify-content:center">What We Bring to Chicago</div>
+        <h2 class="heading">More Than a Meditation Class</h2>
+      </div>
+      <div class="vals-grid">
+        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">🏛️</div><h4>Library Workshops</h4><p>We've hosted multi-part series at Naperville Public Library on Natural Living, mindful eating, and stress management — bringing meditation to the broader community.</p></div>
+        <div class="vcard sr d1"><div class="vcard-ic" style="background:rgba(200,150,50,.08)">🎪</div><h4>Community Fair Booths</h4><p>You'll find us at local fairs and festivals with our Free Relaxation tent — giving people a taste of the practice right in the middle of their Saturday.</p></div>
+        <div class="vcard sr d2"><div class="vcard-ic" style="background:rgba(120,100,180,.08)">🧘</div><h4>International Yoga Day</h4><p>We participate in the annual International Yoga Day celebration, bringing Heartfulness meditation to the larger yoga and wellness community in Chicago.</p></div>
+        <div class="vcard sr d3"><div class="vcard-ic" style="background:rgba(200,100,120,.08)">🤝</div><h4>Cultural Events</h4><p>Active in the FIA Chicago Republic Day celebrations and community events — connecting Heartfulness to the rich cultural fabric of Chicagoland.</p></div>
+        <div class="vcard sr d4"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">👥</div><h4>Certified Trainers</h4><p>Our local trainers are certified volunteers who've practiced for years. They guide every session with personal attention and yogic transmission.</p></div>
+        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(100,140,60,.08)">🌳</div><h4>Outdoor Gatherings</h4><p>Garden sessions, community walks, and family-friendly events — Heartfulness isn't just indoors. We gather wherever it feels right.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-s">
+    <div class="container">
+      <div class="cta-card sr">
+        <div><h2>Come Experience It Yourself</h2><p>The best way to understand Heartfulness is to feel it. Join a session and see what our community is all about.</p></div>
+        <div><a class="btn btn-w" onclick="go('sessions')">Find a Session</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================
+     PAGE: MEDITATION
+     ============================ -->
+<div class="page" id="p-meditation">
+  <div class="med-hero">
+    <div class="container">
+      <div class="eyebrow" style="justify-content:center">The Heartfulness Way</div>
+      <h1 class="heading">Four Simple Daily Practices</h1>
+      <p style="color:var(--g400);font-weight:300;max-width:530px;margin:0 auto">A simple set of relaxation and meditation practices — dynamic and effective tools for personal growth. Practice them daily and feel the shift.</p>
+    </div>
+  </div>
+
+  <section class="prac-section">
+    <div class="container">
+      <div class="prac-row sr">
+        <div class="prac-info">
+          <div class="prac-num">01</div>
+          <h3>Relaxation</h3>
+          <p>Heartfulness Relaxation removes stress and tension from the body, calms the nervous system, and settles your breathing — so you arrive at deep ease before meditation begins.</p>
+          <p>Simple enough for a 5-year-old to learn, yet profoundly effective for even the most stressed adult. It's how we start every session at our Chicago center.</p>
+          <div class="prac-checks">
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Releases accumulated tension</div>
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Prepares body and mind for meditation</div>
+          </div>
+        </div>
+        <div class="prac-vis"><img src="images/hero-meditation.jpg" alt="Heartfulness Relaxation practice"></div>
+      </div>
+
+      <div class="prac-row rev sr">
+        <div class="prac-info">
+          <div class="prac-num">02</div>
+          <h3>Meditation</h3>
+          <p>Suppose there is a divine light in your heart. With the gentle feeling of that light, the practice begins — and through pranahuti (yogic transmission), the experience deepens beyond what the mind can achieve alone.</p>
+          <p>This is what makes Heartfulness different from other meditation approaches. Our Chicago trainers transmit during every session — even on Zoom.</p>
+          <div class="prac-checks">
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Unique yogic transmission (pranahuti)</div>
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Deep states from the very first session</div>
+          </div>
+        </div>
+        <div class="prac-vis"><img src="images/conference-talk.jpg" alt="Heartfulness Meditation with transmission"></div>
+      </div>
+
+      <div class="prac-row sr">
+        <div class="prac-info">
+          <div class="prac-num">03</div>
+          <h3>Cleaning (Rejuvenation)</h3>
+          <p>Heartfulness Cleaning purifies the mind of all its complexities and heaviness. Practiced in the evening, it detoxes the impressions accumulated throughout the day.</p>
+          <p>You'll feel lighter, sleep better, and wake up with more clarity. It's the practice our members say changed their relationship with daily stress.</p>
+          <div class="prac-checks">
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Daily mental detox in the evening</div>
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Better sleep and rejuvenation</div>
+          </div>
+        </div>
+        <div class="prac-vis"><img src="images/womens-group.jpg" alt="Heartfulness evening cleaning practice"></div>
+      </div>
+
+      <div class="prac-row rev sr">
+        <div class="prac-info">
+          <div class="prac-num">04</div>
+          <h3>Inner Connect (Prayer)</h3>
+          <p>At bedtime, Heartfulness Inner Connect allows you to listen to your heart's voice and connect with something deeper within. Like taking a dip into the source of life — you emerge refreshed and balanced.</p>
+          <p>Through this quiet practice, you develop a profound sense of purpose and direction that carries into everything you do.</p>
+          <div class="prac-checks">
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Deepens self-awareness and intuition</div>
+            <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>A peaceful way to close each day</div>
+          </div>
+        </div>
+        <div class="prac-vis"><img src="images/outdoor-group.jpg" alt="Heartfulness Inner Connect practice"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL FOUR VIDEOS -->
+  <section class="vids-grid">
+    <div class="container" style="position:relative;z-index:1;text-align:center">
+      <div class="sr">
+        <div class="eyebrow" style="justify-content:center">Learn More</div>
+        <h2 class="heading">Watch &amp; Experience</h2>
+        <p class="subtext" style="margin:0 auto">Guided sessions, talks, and introductions to the Heartfulness practice.</p>
+      </div>
+      <div class="vid-cards">
+        <div class="vid-card sr"><iframe src="https://www.youtube.com/embed/f37wdNIPB_g" title="Heartfulness Video 1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vid-card sr d1"><iframe src="https://www.youtube.com/embed/_G42Z7-vZvw" title="Heartfulness Video 2" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vid-card sr d2"><iframe src="https://www.youtube.com/embed/9Wvka8pl624" title="Heartfulness Video 3" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vid-card sr d3"><iframe src="https://www.youtube.com/embed/vYp-Y3UiCh8" title="Heartfulness Video 4" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="research">
+    <div class="container">
+      <div class="sr">
+        <div class="eyebrow" style="justify-content:center">Trusted Worldwide</div>
+        <h2 class="heading">Practiced at Leading Organizations</h2>
+        <p class="subtext" style="margin:0 auto">Heartfulness has a corporate presence in Fortune 500 companies worldwide.</p>
+      </div>
+      <div class="research-logos sr d1"><span>LinkedIn</span><span>Google</span><span>IBM</span><span>Intel</span><span>Meta</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================
+     PAGE: SESSIONS
+     ============================ -->
+<div class="page" id="p-sessions">
+  <div class="sess-hero">
+    <div class="container">
+      <div class="eyebrow" style="justify-content:center">Join Us</div>
+      <h1 class="heading">Meditation Sessions</h1>
+      <p style="color:var(--g400);font-weight:300;max-width:480px;margin:0 auto">Beginner or experienced — everyone is welcome. No signup, no cost. Just show up.</p>
+    </div>
+  </div>
+
+  <section class="sched">
+    <div class="container">
+      <div class="sched-grid">
+        <div class="scard sr">
+          <span class="badge">In-Person</span>
+          <h3>Sunday Group Meditation</h3>
+          <div class="stime">9:00 AM</div>
+          <p>Start your week centered. Guided group meditation with yogic transmission by our Chicago trainers.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>3537 W Belden Ave, Chicago, IL 60647</span></div>
+        </div>
+        <div class="scard sr d1">
+          <span class="badge">Online — Zoom</span>
+          <h3>Daily Morning Meditation</h3>
+          <div class="stime">6:30 AM</div>
+          <p>Monday–Saturday. Begin each day with clarity. No experience needed — just join and be guided.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Meeting ID: 748 825 5077 · Passcode: 123456</span></div>
+        </div>
+        <div class="scard sr d2">
+          <span class="badge">In-Person</span>
+          <h3>Lombard Center Sessions</h3>
+          <div class="stime">By Appointment</div>
+          <p>One-on-one guided meditation with a certified trainer. Personal transmission for deeper experience.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Suite #104, 350 W 22nd St, Lombard, IL 60148</span></div>
+        </div>
+      </div>
+      <div class="zoom-bar sr">
+        <div class="zoom-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><h4>Can't make it in person?</h4><p>Join our Zoom sessions Monday–Saturday at 6:30 AM and Sundays at 9:00 AM. All you need is a quiet spot and an open heart.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="locs">
+    <div class="container">
+      <div class="sr" style="text-align:center"><div class="eyebrow" style="justify-content:center">Find Us</div><h2 class="heading">Our Chicago Area Centers</h2></div>
+      <div class="loc-grid">
+        <div class="loc-list">
+          <div class="lcard sr"><div class="lm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p></div></div>
+          <div class="lcard sr d1"><div class="lm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p></div></div>
+          <div class="lcard sr d2"><div class="lm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p></div></div>
+        </div>
+        <div class="map-f sr d1"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190255.8!2d-88.05!3d41.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL!5e0!3m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <div class="con-grid">
+        <div class="con-info sr">
+          <div class="eyebrow">Get in Touch</div>
+          <h3>We'd Love to Hear From You</h3>
+          <p>Questions about meditation? Want to arrange a workshop at your workplace or school? We're always happy to help.</p>
+          <div class="cd"><div class="cd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="cd-l">Address</div><div class="cd-v">Suite #104, 350 W 22nd St, Lombard, IL 60148</div></div></div>
+          <div class="cd"><div class="cd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cd-l">Email</div><div class="cd-v">info@chicagoheartfulness.org</div></div></div>
+          <div class="soc-row">
+            <a href="https://www.facebook.com/heartfulnesschicago/" class="soc-a" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://twitter.com/heartfulness_il" class="soc-a" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="https://www.youtube.com/heartfulness" class="soc-a" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48" fill="var(--g500)"/></svg></a>
+          </div>
+        </div>
+        <div class="sr d1">
+          <div class="app-card">
+            <div style="font-size:2.8rem;margin-bottom:10px">🪷</div>
+            <h4>Heartfulness App</h4>
+            <p>Meditate anytime with guided practices. Connect with certified trainers worldwide.</p>
+            <div class="app-btns">
+              <a href="https://apps.apple.com/app/heartfulness-daily-meditation/id1576857513" class="app-b" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div><span style="font-size:.68rem">Download on the</span><br><strong>App Store</strong></div></a>
+              <a href="https://play.google.com/store/apps/details?id=org.heartfulness.heartintune.prod" class="app-b" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white"><path d="M3.61 1.82L13.42 12 3.6 22.18c-.37-.35-.6-.85-.6-1.42V3.24c0-.56.22-1.06.6-1.42zm.37-.36L14.54 12 4 22.54zm10.82 10.54l3.34-1.94-3.56-2.07-2.12 2.12 2.34 1.89zM5.1 1.08l9.86 5.73L12.62 9.1 5.1 1.08z"/></svg><div><span style="font-size:.68rem">Get it on</span><br><strong>Google Play</strong></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================
+     PAGE: COMMUNITY
+     ============================ -->
+<div class="page" id="p-community">
+  <div class="pg-head">
+    <div class="container">
+      <div class="eyebrow" style="justify-content:center">Chicago Community</div>
+      <h1 class="heading">Heartfulness in Action</h1>
+      <p>From Sunday mornings to community fairs — here's how we bring meditation to Chicagoland.</p>
+    </div>
+  </div>
+
+  <!-- Full gallery -->
+  <section class="in-action">
+    <div class="container">
+      <div class="sr" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">Photo Gallery</div>
+        <h2 class="heading">Our Moments Together</h2>
+      </div>
+      <div class="action-gallery">
+        <div class="action-item wide sr"><img src="images/community-walk.jpg" alt="Community walk"><div class="overlay">Community Walk — Experience Heartfulness</div></div>
+        <div class="action-item sr d1"><img src="images/outdoor-booth.jpg" alt="Community fair booth"><div class="overlay">Free Relaxation at Community Fair</div></div>
+        <div class="action-item sr d2"><img src="images/community-fair-2.jpg" alt="Volunteer booth"><div class="overlay">Volunteers at Community Fair</div></div>
+        <div class="action-item sr"><img src="images/hero-meditation.jpg" alt="Meditation session on mats"><div class="overlay">Sunday Morning Meditation</div></div>
+        <div class="action-item sr d1"><img src="images/library-talk.jpg" alt="Library talk"><div class="overlay">Naperville Library Workshop</div></div>
+        <div class="action-item sr d2"><img src="images/classroom-talk.jpg" alt="Community center talk"><div class="overlay">Community Center Presentation</div></div>
+        <div class="action-item wide sr"><img src="images/group-photo.jpg" alt="Large group photo"><div class="overlay">Heartfulness Chicago Community</div></div>
+        <div class="action-item sr d1"><img src="images/expo-booth.jpg" alt="Expo booth"><div class="overlay">Heartfulness Institute Expo</div></div>
+        <div class="action-item sr d2"><img src="images/expo-booth-2.jpg" alt="Expo booth 2"><div class="overlay">Wellness Expo</div></div>
+        <div class="action-item sr d3"><img src="images/yoga-day.jpg" alt="Yoga Day"><div class="overlay">International Yoga Day</div></div>
+        <div class="action-item sr"><img src="images/conference-talk.jpg" alt="Conference"><div class="overlay">Heartfulness Conference</div></div>
+        <div class="action-item sr d1"><img src="images/womens-group.jpg" alt="Women's group"><div class="overlay">Women's Meditation Circle</div></div>
+        <div class="action-item sr d2"><img src="images/outdoor-group.jpg" alt="Outdoor gathering"><div class="overlay">Garden Gathering</div></div>
+        <div class="action-item sr d3"><img src="images/outdoor-booth-2.jpg" alt="Relaxed at booth"><div class="overlay">Relaxation at the Fair</div></div>
+        <div class="action-item wide sr"><img src="images/lakefront.jpg" alt="Lakefront meditation"><div class="overlay">Meditating at the Chicago Lakefront</div></div>
+        <div class="action-item sr"><img src="images/trainers-formal.jpg" alt="Trainers"><div class="overlay">Our Trainers at a Community Event</div></div>
+        <div class="action-item sr d1"><img src="images/wellness-fair.jpg" alt="Wellness fair"><div class="overlay">Heartfulness at Wellness Fair</div></div>
+        <div class="action-item sr d2"><img src="images/family-gathering.jpg" alt="Family gathering"><div class="overlay">Community Family Gathering</div></div>
+        <div class="action-item sr d3"><img src="images/colorful-group.jpg" alt="Colorful group"><div class="overlay">Vibrant Community Gathering</div></div>
+        <div class="action-item sr"><img src="images/community-session.jpg" alt="Community session"><div class="overlay">Community Meditation Session</div></div>
+        <div class="action-item sr d1"><img src="images/family-group.jpg" alt="Family group"><div class="overlay">Heartfulness Families</div></div>
+        <div class="action-item sr d2"><img src="images/indoor-expo.jpg" alt="Indoor expo"><div class="overlay">Heartfulness at Indoor Expo</div></div>
+        <div class="action-item wide sr"><img src="images/hero-meditation.jpg" alt="Sunday meditation on colorful mats"><div class="overlay">Sunday Morning Meditation — Chicago</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In the News -->
+  <section class="news-s">
+    <div class="container">
+      <div class="sr" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">In the News</div>
+        <h2 class="heading">Making Headlines in Chicagoland</h2>
+      </div>
+      <div class="news-card sr">
+        <div class="news-img">
+                    <img src="images/newspaper.png" alt="Newspaper article about Heartfulness Chicago at Naperville Library">
+        </div>
+        <div class="news-text">
+          <span class="news-tag">Press Coverage</span>
+          <h3>Meditation Center Hosts Series On Natural Living at Naperville Library</h3>
+          <p>Heartfulness Chicago was featured in the local press for hosting a 4-part series on Natural Living at the Naperville Public Library. The program covered meditation, mindful eating, exploring the mind-body connection, and stress management — open to all, free of charge.</p>
+          <p>The series was part of our ongoing effort to bring Heartfulness to libraries, community centers, and public spaces across the Chicago suburbs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-s">
+    <div class="container">
+      <div class="cta-card sr">
+        <div><h2>Want to Be Part of This?</h2><p>Whether you're looking for inner peace or just curious — come sit with us this Sunday. No experience needed.</p></div>
+        <div><a class="btn btn-w" onclick="go('sessions')">Join a Session</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================
+     FOOTER
+     ============================ -->
+<footer id="ft">
+  <div class="container">
+    <div class="ft-grid">
+      <div><div class="ft-brand">heartfulness <span class="c">chicago</span></div><p class="ft-desc">A global not-for-profit dedicated to uplifting communities through heart-based meditation. All services free, always.</p><p class="ft-desc" style="font-style:italic;opacity:.6;font-size:.8rem">purity weaves destiny</p></div>
+      <div><h5>Explore</h5><ul><li><a href="#" onclick="go('home');return false">Home</a></li><li><a href="#" onclick="go('about');return false">About</a></li><li><a href="#" onclick="go('meditation');return false">Meditation</a></li><li><a href="#" onclick="go('sessions');return false">Sessions</a></li><li><a href="#" onclick="go('community');return false">Community</a></li></ul></div>
+      <div><h5>Resources</h5><ul><li><a href="https://heartfulness.org/us/" target="_blank" rel="noopener">Heartfulness US</a></li><li><a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a></li><li><a href="https://www.heartfulnessapp.org/" target="_blank" rel="noopener">Download App</a></li><li><a href="https://heartfulness.org/us/videos/" target="_blank" rel="noopener">Videos</a></li></ul></div>
+      <div><h5>Connect</h5><ul><li><a href="https://www.facebook.com/heartfulnesschicago/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://twitter.com/heartfulness_il" target="_blank" rel="noopener">Twitter</a></li><li><a href="https://www.youtube.com/heartfulness" target="_blank" rel="noopener">YouTube</a></li><li><a href="mailto:info@chicagoheartfulness.org">Email Us</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>&copy; 2026 Heartfulness Chicago. All services free of charge.</span><span>A chapter of the <a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a> · Sahaj Marg Meditation</span></div>
+  </div>
+</footer>
+
+<!-- ============================
+     SCRIPTS
+     ============================ -->
+<script>
+const pages=['home','about','meditation','sessions','community'];
+let cur='home';
+
+function go(p){
+  if(p===cur){window.scrollTo({top:0,behavior:'smooth'});return}
+  const old=document.getElementById('p-'+cur);
+  if(old)old.classList.remove('show');
+  setTimeout(()=>{
+    document.querySelectorAll('.page').forEach(x=>{x.classList.remove('on','show')});
+    const el=document.getElementById('p-'+p);
+    if(el){el.classList.add('on');window.scrollTo({top:0,behavior:'instant'});requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')))}
+    document.querySelectorAll('#nm .nv').forEach(n=>n.classList.remove('on'));
+    const a=document.querySelector(`#nm .nv[onclick*="'${p}'"]`);if(a)a.classList.add('on');
+    cur=p;history.pushState({page:p},'','#'+p);obs();
+  },280);
+}
+window.addEventListener('popstate',e=>{if(e.state&&e.state.page)go(e.state.page)});
+const h=location.hash.replace('#','');
+if(pages.includes(h)){cur=h;document.querySelectorAll('.page').forEach(x=>x.classList.remove('on','show'));const el=document.getElementById('p-'+h);if(el){el.classList.add('on','show')}document.querySelectorAll('#nm .nv').forEach(n=>n.classList.remove('on'));const a=document.querySelector(`#nm .nv[onclick*="'${h}'"]`);if(a)a.classList.add('on')}
+
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('ldr').classList.add('out');const ap=document.querySelector('.page.on');if(ap)ap.classList.add('show')},500)});
+
+function togMob(){document.getElementById('mb').classList.toggle('open');document.getElementById('mm').classList.toggle('open');document.body.style.overflow=document.getElementById('mm').classList.contains('open')?'hidden':''}
+function closeMob(){document.getElementById('mb').classList.remove('open');document.getElementById('mm').classList.remove('open');document.body.style.overflow=''}
+
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>25)});
+
+function obs(){
+  const els=document.querySelectorAll('.sr:not(.v)');
+  const o=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(e=>o.observe(e));
+}
+obs();
+</script>
+</body>
+</html>
