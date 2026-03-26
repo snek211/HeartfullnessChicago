@@ -390,6 +390,83 @@ footer ul a:hover{color:var(--hf-teal-light)}
   .hero-btns{flex-direction:column;align-items:center}
   .app-btns{flex-direction:column}
 }
+
+/* ============================================
+   ABOUT — Contact cards & social
+   ============================================ */
+.about-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.about-ccard{background:var(--white);border:1px solid var(--g100);border-radius:16px;padding:32px 24px;text-align:center;transition:box-shadow .3s ease,transform .3s ease}
+.about-ccard:hover{box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+.about-ccard-ic{width:52px;height:52px;border-radius:14px;background:rgba(0,131,143,.06);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.about-ccard h4{margin-bottom:8px;color:var(--g800)}
+.soc-a.lg{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;background:var(--g50);border:1px solid var(--g100);color:var(--g600);text-decoration:none;font-size:.88rem;font-weight:500;transition:all .25s ease}
+.soc-a.lg svg{width:20px;height:20px;fill:var(--g500);stroke:none}
+.soc-a.lg:hover{background:var(--hf-teal);color:white;border-color:var(--hf-teal)}
+.soc-a.lg:hover svg{fill:white}
+
+/* ============================================
+   CALENDAR
+   ============================================ */
+.cal-section{padding:80px 0 0}
+.cal-wrap{background:var(--white);border:1px solid var(--g100);border-radius:20px;padding:32px;max-width:700px;margin:40px auto 0;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.cal-header h3{font-family:var(--font-display);color:var(--g800);font-size:1.3rem}
+.cal-nav{background:none;border:1px solid var(--g100);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--g500);transition:all .2s ease}
+.cal-nav:hover{background:var(--hf-teal);color:white;border-color:var(--hf-teal)}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:.75rem;font-weight:600;color:var(--g400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-cell{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;font-size:.92rem;color:var(--g600);position:relative;cursor:default;transition:all .2s ease}
+.cal-cell.empty{cursor:default}
+.cal-cell.today{font-weight:700;color:var(--hf-teal);background:rgba(0,131,143,.06)}
+.cal-cell.has-event{cursor:pointer;font-weight:600}
+.cal-cell.has-event:hover{background:rgba(0,131,143,.08);transform:scale(1.08)}
+.cal-cell .cal-dots{display:flex;gap:3px;margin-top:2px;position:absolute;bottom:5px}
+.cal-dot{width:5px;height:5px;border-radius:50%}
+.cal-legend{display:flex;gap:20px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.cal-legend span{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--g400)}
+.legend-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.cal-detail{background:var(--white);border:1px solid var(--g100);border-radius:16px;padding:24px;max-width:700px;margin:16px auto 0;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.cal-detail-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cal-detail-head h4{color:var(--g800)}
+.cal-evt{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--g50)}
+.cal-evt:last-child{border-bottom:none}
+.cal-evt-dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.cal-evt-info strong{display:block;color:var(--g700);font-size:.95rem}
+.cal-evt-info span{color:var(--g400);font-size:.82rem}
+
+/* ============================================
+   JOIN MODAL
+   ============================================ */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal-card{background:var(--white);border-radius:20px;max-width:520px;width:92%;max-height:90vh;overflow-y:auto;padding:36px;position:relative;transform:translateY(20px);transition:transform .35s var(--ease);box-shadow:0 24px 60px rgba(0,0,0,.15)}
+.modal-overlay.open .modal-card{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.6rem;color:var(--g300);cursor:pointer;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all .2s ease}
+.modal-close:hover{background:var(--g50);color:var(--g600)}
+.modal-step h3{font-family:var(--font-display);color:var(--g800);font-size:1.4rem;margin-bottom:4px}
+.jm-options{display:flex;flex-direction:column;gap:12px}
+.jm-opt{display:flex;align-items:flex-start;gap:16px;background:var(--g50);border:1.5px solid var(--g100);border-radius:14px;padding:20px;text-align:left;cursor:pointer;transition:all .25s ease;width:100%}
+.jm-opt:hover{border-color:var(--hf-teal);background:rgba(0,131,143,.03);transform:translateX(4px)}
+.jm-opt-ic{font-size:1.6rem;flex-shrink:0;margin-top:2px}
+.jm-opt strong{display:block;color:var(--g800);font-size:1rem;margin-bottom:4px}
+.jm-opt p{color:var(--g400);font-size:.85rem;margin:0;line-height:1.4}
+.jm-back{background:none;border:none;color:var(--hf-teal);font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:16px;font-weight:500;padding:0}
+.jm-back:hover{text-decoration:underline}
+.jm-field{margin-bottom:16px}
+.jm-field label{display:block;font-size:.82rem;font-weight:600;color:var(--g600);margin-bottom:6px}
+.jm-field input,.jm-field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--g100);border-radius:10px;font-family:var(--font-body);font-size:.92rem;color:var(--g800);transition:border-color .2s ease;outline:none;background:var(--g50)}
+.jm-field input:focus,.jm-field textarea:focus{border-color:var(--hf-teal);background:var(--white)}
+.jm-loc-opts{display:flex;flex-direction:column;gap:8px}
+.jm-loc{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid var(--g100);border-radius:10px;cursor:pointer;transition:all .2s ease;font-size:.92rem;color:var(--g600)}
+.jm-loc:hover{border-color:var(--hf-teal)}
+.jm-loc input[type="radio"]{accent-color:var(--hf-teal)}
+.jm-loc:has(input:checked){border-color:var(--hf-teal);background:rgba(0,131,143,.04);color:var(--g800);font-weight:500}
+
+@media(max-width:768px){
+  .about-contact-grid{grid-template-columns:1fr}
+  .modal-card{padding:24px}
+  .cal-wrap{padding:20px}
+}
 </style>
 </head>
 <body>
@@ -411,7 +488,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <span class="nv" onclick="go('meditation')">Meditation</span>
       <span class="nv" onclick="go('sessions')">Sessions</span>
       <span class="nv" onclick="go('community')">Community</span>
-      <span class="nv-cta" onclick="go('sessions')">Join Free Session</span>
+      <span class="nv-cta" onclick="openJoinModal()">Join Free Session</span>
     </div>
     <button class="mob-btn" id="mb" onclick="togMob()"><span></span><span></span><span></span></button>
   </div>
@@ -422,7 +499,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <span class="nv" onclick="go('meditation');closeMob()">Meditation</span>
   <span class="nv" onclick="go('sessions');closeMob()">Sessions</span>
   <span class="nv" onclick="go('community');closeMob()">Community</span>
-  <span class="nv-cta" onclick="go('sessions');closeMob()">Join Free Session</span>
+  <span class="nv-cta" onclick="openJoinModal();closeMob()">Join Free Session</span>
 </div>
 
 <!-- ============================
@@ -438,7 +515,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <h1>Find Joy, Peace &amp; <span class="hl">Inner Balance</span></h1>
         <p class="hero-desc">We're a community of meditators across Chicagoland — gathering every Sunday, hosting free workshops at local libraries, and welcoming anyone who wants to experience the heart. No cost, no catch.</p>
         <div class="hero-btns">
-          <a class="btn btn-p" onclick="go('sessions')">
+          <a class="btn btn-p" onclick="openJoinModal()">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             Join This Sunday
           </a>
@@ -469,24 +546,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <div class="feat sr d1"><div class="feat-ic">💛</div><h4>Meditation</h4><p>Dive deep with yogic transmission</p></div>
         <div class="feat sr d2"><div class="feat-ic">🌸</div><h4>Cleaning</h4><p>Detox the mind, feel lighter</p></div>
         <div class="feat sr d3"><div class="feat-ic">✨</div><h4>Inner Connect</h4><p>Listen to your heart's voice</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMUNITY GALLERY — Real Chicago photos -->
-  <section class="community">
-    <div class="container">
-      <div class="sr" style="text-align:center">
-        <div class="eyebrow" style="justify-content:center">Our Chicago Community</div>
-        <h2 class="heading">More Than Meditation — We're a Family</h2>
-        <p class="subtext" style="margin:0 auto">From community fairs to library workshops, from Sunday mornings to International Yoga Day — here's what Heartfulness looks like in Chicago.</p>
-      </div>
-      <div class="comm-gallery">
-        <div class="photo-frame sr"><img src="images/group-photo.jpg" alt="Heartfulness Chicago community group photo"></div>
-        <div class="photo-frame sr d1"><img src="images/community-walk.jpg" alt="Chicago Heartfulness community walk with families"></div>
-        <div class="photo-frame sr d2"><img src="images/outdoor-booth.jpg" alt="Free relaxation booth at community fair"></div>
-        <div class="photo-frame sr d3"><img src="images/outdoor-group.jpg" alt="Heartfulness Chicago outdoor garden gathering"></div>
-        <div class="photo-frame sr d4"><img src="images/trainers-formal.jpg" alt="Heartfulness Chicago trainers"></div>
       </div>
     </div>
   </section>
@@ -536,7 +595,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
     <div class="container">
       <div class="cta-card sr">
         <div><h2>Your First Session Is This Sunday</h2><p>9:00 AM at our Chicago Center. No signup needed — just show up with an open heart. We'll guide you through everything.</p></div>
-        <div><a class="btn btn-w" onclick="go('sessions')">Get Details</a></div>
+        <div><a class="btn btn-w" onclick="openJoinModal()">Get Started</a></div>
       </div>
     </div>
   </section>
@@ -573,16 +632,54 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <section class="vals">
     <div class="container" style="text-align:center">
       <div class="sr">
-        <div class="eyebrow" style="justify-content:center">What We Bring to Chicago</div>
+        <div class="eyebrow" style="justify-content:center">Beyond the Practice</div>
         <h2 class="heading">More Than a Meditation Class</h2>
+        <p class="subtext" style="margin:0 auto">Heartfulness extends well beyond sitting with your eyes closed. Here's what else we offer to help you grow.</p>
       </div>
       <div class="vals-grid">
-        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">🏛️</div><h4>Library Workshops</h4><p>We've hosted multi-part series at Naperville Public Library on Natural Living, mindful eating, and stress management — bringing meditation to the broader community.</p></div>
-        <div class="vcard sr d1"><div class="vcard-ic" style="background:rgba(200,150,50,.08)">🎪</div><h4>Community Fair Booths</h4><p>You'll find us at local fairs and festivals with our Free Relaxation tent — giving people a taste of the practice right in the middle of their Saturday.</p></div>
-        <div class="vcard sr d2"><div class="vcard-ic" style="background:rgba(120,100,180,.08)">🧘</div><h4>International Yoga Day</h4><p>We participate in the annual International Yoga Day celebration, bringing Heartfulness meditation to the larger yoga and wellness community in Chicago.</p></div>
-        <div class="vcard sr d3"><div class="vcard-ic" style="background:rgba(200,100,120,.08)">🤝</div><h4>Cultural Events</h4><p>Active in the FIA Chicago Republic Day celebrations and community events — connecting Heartfulness to the rich cultural fabric of Chicagoland.</p></div>
-        <div class="vcard sr d4"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">👥</div><h4>Certified Trainers</h4><p>Our local trainers are certified volunteers who've practiced for years. They guide every session with personal attention and yogic transmission.</p></div>
-        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(100,140,60,.08)">🌳</div><h4>Outdoor Gatherings</h4><p>Garden sessions, community walks, and family-friendly events — Heartfulness isn't just indoors. We gather wherever it feels right.</p></div>
+        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">🧠</div><h4>Brighter Minds</h4><p>A cognitive development program for children aged 5–15 that enhances intuition, focus, and emotional balance through guided activities and relaxation techniques.</p></div>
+        <div class="vcard sr d1"><div class="vcard-ic" style="background:rgba(200,150,50,.08)">👥</div><h4>Personal Trainer Support</h4><p>Every practitioner gets access to a certified trainer for free, one-on-one guidance. They provide individual sittings and personal support on your journey.</p></div>
+        <div class="vcard sr d2"><div class="vcard-ic" style="background:rgba(120,100,180,.08)">🌱</div><h4>Green Kanha Initiative</h4><p>Heartfulness maintains one of the world's largest meditation centers and has planted millions of trees — connecting inner transformation with environmental stewardship.</p></div>
+        <div class="vcard sr d3"><div class="vcard-ic" style="background:rgba(200,100,120,.08)">🎓</div><h4>Youth Empowerment</h4><p>Programs for college students and young professionals focused on emotional intelligence, purpose-driven living, and building resilience through meditation.</p></div>
+        <div class="vcard sr d4"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">🔬</div><h4>Research-Backed Wellness</h4><p>Published studies in peer-reviewed journals show Heartfulness reduces burnout, improves sleep quality, and enhances emotional regulation and well-being.</p></div>
+        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(100,140,60,.08)">📖</div><h4>Masterclasses & Workshops</h4><p>Topics like stress resilience, mindful parenting, work-life harmony, and natural living — practical tools you can apply immediately in daily life.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — Contact & Social Media -->
+  <section class="about-connect">
+    <div class="container">
+      <div class="sr" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">Reach Out</div>
+        <h2 class="heading">Get in Touch With Us</h2>
+        <p class="subtext" style="margin:0 auto">Have questions about Heartfulness? Interested in a workshop for your school or workplace? We'd love to hear from you.</p>
+      </div>
+      <div class="about-contact-grid">
+        <div class="about-ccard sr">
+          <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <h4>Email Us</h4>
+          <a href="mailto:info@chicagoheartfulness.org" style="color:var(--hf-teal);font-weight:500">info@chicagoheartfulness.org</a>
+        </div>
+        <div class="about-ccard sr d1">
+          <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h4>Visit Us</h4>
+          <p style="color:var(--g500);font-size:.92rem">Suite #104, 350 W 22nd St<br>Lombard, IL 60148</p>
+        </div>
+        <div class="about-ccard sr d2">
+          <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h4>Session Times</h4>
+          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM (In-Person)<br>Mon–Sat 6:30 AM (Zoom)</p>
+        </div>
+      </div>
+      <div class="about-social sr" style="text-align:center;margin-top:40px;">
+        <p style="font-weight:500;color:var(--g600);margin-bottom:16px;">Follow us on social media</p>
+        <div class="soc-row" style="justify-content:center;gap:16px;">
+          <a href="https://www.facebook.com/heartfulnesschicago/" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><span>Facebook</span></a>
+          <a href="https://twitter.com/heartfulness_il" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"/></svg><span>Twitter</span></a>
+          <a href="https://www.youtube.com/heartfulness" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48" fill="var(--g500)"/></svg><span>YouTube</span></a>
+          <a href="https://www.instagram.com/heartfulness/" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -590,8 +687,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <section class="cta-s">
     <div class="container">
       <div class="cta-card sr">
-        <div><h2>Come Experience It Yourself</h2><p>The best way to understand Heartfulness is to feel it. Join a session and see what our community is all about.</p></div>
-        <div><a class="btn btn-w" onclick="go('sessions')">Find a Session</a></div>
+        <div><h2>Come Experience It Yourself</h2><p>The best way to understand Heartfulness is to feel it. Join a session and see what draws people in.</p></div>
+        <div><a class="btn btn-w" onclick="openJoinModal()">Find a Session</a></div>
       </div>
     </div>
   </section>
@@ -742,6 +839,40 @@ footer ul a:hover{color:var(--hf-teal-light)}
     </div>
   </section>
 
+  <!-- INTERACTIVE CALENDAR -->
+  <section class="cal-section">
+    <div class="container">
+      <div class="sr" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">Events & Schedule</div>
+        <h2 class="heading">Upcoming Sessions & Events</h2>
+        <p class="subtext" style="margin:0 auto">Browse our monthly calendar. Click any highlighted day to see what's happening.</p>
+      </div>
+      <div class="cal-wrap sr d1">
+        <div class="cal-header">
+          <button class="cal-nav" id="cal-prev" onclick="calNav(-1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <h3 id="cal-title"></h3>
+          <button class="cal-nav" id="cal-next" onclick="calNav(1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="cal-days">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <span><span class="legend-dot" style="background:var(--hf-teal)"></span>In-Person Session</span>
+          <span><span class="legend-dot" style="background:var(--hf-cyan)"></span>Online / Zoom</span>
+          <span><span class="legend-dot" style="background:var(--hf-gold)"></span>Special Event</span>
+        </div>
+      </div>
+      <div class="cal-detail" id="cal-detail" style="display:none">
+        <div class="cal-detail-head">
+          <h4 id="cal-detail-date"></h4>
+          <button onclick="document.getElementById('cal-detail').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--g400);font-size:1.2rem">&times;</button>
+        </div>
+        <div id="cal-detail-events"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="locs">
     <div class="container">
       <div class="sr" style="text-align:center"><div class="eyebrow" style="justify-content:center">Find Us</div><h2 class="heading">Our Chicago Area Centers</h2></div>
@@ -866,6 +997,56 @@ footer ul a:hover{color:var(--hf-teal-light)}
   </section>
 </div>
 
+<!-- JOIN SESSION MODAL -->
+<div class="modal-overlay" id="join-modal" onclick="if(event.target===this)closeJoinModal()">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeJoinModal()">&times;</button>
+    <div class="modal-step" id="jm-step1">
+      <h3>How Can We Help?</h3>
+      <p style="color:var(--g400);margin-bottom:28px;">Choose what you're looking for and we'll guide you from there.</p>
+      <div class="jm-options">
+        <button class="jm-opt" onclick="jmSelect('talk')">
+          <div class="jm-opt-ic">💬</div>
+          <div><strong>Talk to Someone</strong><p>Ask questions, learn more about Heartfulness, or connect with a trainer.</p></div>
+        </button>
+        <button class="jm-opt" onclick="jmSelect('attend')">
+          <div class="jm-opt-ic">🧘</div>
+          <div><strong>Attend a Meditation / Event</strong><p>Join a guided session — in-person or online. No experience needed.</p></div>
+        </button>
+        <button class="jm-opt" onclick="jmSelect('location')">
+          <div class="jm-opt-ic">📍</div>
+          <div><strong>Select a Location</strong><p>Find the center nearest to you — Chicago, Lombard, or Lincolnshire.</p></div>
+        </button>
+      </div>
+    </div>
+    <div class="modal-step" id="jm-step2" style="display:none">
+      <button class="jm-back" onclick="jmBack()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <h3 id="jm-step2-title"></h3>
+      <p style="color:var(--g400);margin-bottom:24px;" id="jm-step2-desc"></p>
+      <div id="jm-location-pick" style="display:none;margin-bottom:20px;">
+        <div class="jm-loc-opts">
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Chicago Center — 3537 W Belden Ave, Chicago, IL 60647" checked><span>Chicago Center</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Lombard Center — Suite #104, 350 W 22nd St, Lombard, IL 60148"><span>Lombard Center</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Lincolnshire Center — 30 Riverwoods Rd, Lincolnshire, IL 60069"><span>Lincolnshire Center</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Online — Zoom"><span>Online (Zoom)</span></label>
+        </div>
+      </div>
+      <form id="jm-form" onsubmit="jmSubmit(event)">
+        <div class="jm-field"><label>Your Name</label><input type="text" id="jm-name" required placeholder="First and last name"></div>
+        <div class="jm-field"><label>Email Address</label><input type="email" id="jm-email" required placeholder="you@example.com"></div>
+        <div class="jm-field"><label>Message <span style="font-weight:400;color:var(--g300)">(optional)</span></label><textarea id="jm-msg" rows="3" placeholder="Any questions or preferences..."></textarea></div>
+        <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;margin-top:8px;">Send Request</button>
+      </form>
+    </div>
+    <div class="modal-step" id="jm-step3" style="display:none;text-align:center;padding:40px 20px;">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <h3>We'll Be in Touch!</h3>
+      <p style="color:var(--g400);margin-top:12px;">Your request has been sent to <strong>info@chicagoheartfulness.org</strong>. Someone from our team will get back to you soon.</p>
+      <button class="btn btn-p" onclick="closeJoinModal()" style="margin-top:24px;">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============================
      FOOTER
      ============================ -->
@@ -918,6 +1099,153 @@ function obs(){
   els.forEach(e=>o.observe(e));
 }
 obs();
+
+/* ===== INTERACTIVE CALENDAR ===== */
+let calMonth, calYear;
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS_SHORT=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+// Recurring events definition
+function getEventsForDate(y,m,d){
+  const dt=new Date(y,m,d);
+  const dow=dt.getDay(); // 0=Sun
+  const evts=[];
+  // Sunday Group Meditation — every Sunday
+  if(dow===0) evts.push({name:'Sunday Group Meditation',time:'9:00 AM',loc:'Chicago Center',type:'in-person'});
+  // Daily Zoom Meditation — Mon-Sat
+  if(dow>=1&&dow<=6) evts.push({name:'Morning Meditation (Zoom)',time:'6:30 AM',loc:'Online — Zoom',type:'online'});
+  // Lombard sessions — every Wednesday
+  if(dow===3) evts.push({name:'Lombard Center Session',time:'7:00 PM',loc:'Lombard Center',type:'in-person'});
+  // First Saturday: special workshop
+  const first=new Date(y,m,1).getDay();
+  const firstSat=first<=6?(6-first+1):1;
+  if(dow===6&&d<=7) evts.push({name:'Newcomer Introduction Workshop',time:'10:00 AM',loc:'Chicago Center',type:'special'});
+  return evts;
+}
+
+function renderCal(){
+  const grid=document.getElementById('cal-grid');
+  const title=document.getElementById('cal-title');
+  if(!grid||!title)return;
+  title.textContent=MONTHS[calMonth]+' '+calYear;
+  grid.innerHTML='';
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  const today=new Date();
+  // Empty cells
+  for(let i=0;i<firstDay;i++){const c=document.createElement('div');c.className='cal-cell empty';grid.appendChild(c)}
+  // Day cells
+  for(let d=1;d<=daysInMonth;d++){
+    const c=document.createElement('div');
+    c.className='cal-cell';
+    const isToday=d===today.getDate()&&calMonth===today.getMonth()&&calYear===today.getFullYear();
+    if(isToday)c.classList.add('today');
+    const evts=getEventsForDate(calYear,calMonth,d);
+    if(evts.length){
+      c.classList.add('has-event');
+      c.onclick=()=>showCalDetail(calYear,calMonth,d,evts);
+      const dots=document.createElement('div');
+      dots.className='cal-dots';
+      const types=new Set(evts.map(e=>e.type));
+      types.forEach(t=>{
+        const dot=document.createElement('span');
+        dot.className='cal-dot';
+        dot.style.background=t==='in-person'?'var(--hf-teal)':t==='online'?'var(--hf-cyan)':'var(--hf-gold)';
+        dots.appendChild(dot);
+      });
+      c.appendChild(dots);
+    }
+    const num=document.createElement('span');num.textContent=d;
+    c.insertBefore(num,c.firstChild);
+    grid.appendChild(c);
+  }
+}
+
+function showCalDetail(y,m,d,evts){
+  const det=document.getElementById('cal-detail');
+  const dateEl=document.getElementById('cal-detail-date');
+  const evtsEl=document.getElementById('cal-detail-events');
+  const dt=new Date(y,m,d);
+  dateEl.textContent=DAYS_SHORT[dt.getDay()]+', '+MONTHS[m]+' '+d+', '+y;
+  evtsEl.innerHTML='';
+  evts.forEach(e=>{
+    const color=e.type==='in-person'?'var(--hf-teal)':e.type==='online'?'var(--hf-cyan)':'var(--hf-gold)';
+    evtsEl.innerHTML+=`<div class="cal-evt"><div class="cal-evt-dot" style="background:${color}"></div><div class="cal-evt-info"><strong>${e.name}</strong><span>${e.time} · ${e.loc}</span></div></div>`;
+  });
+  det.style.display='block';
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function calNav(dir){
+  calMonth+=dir;
+  if(calMonth>11){calMonth=0;calYear++}
+  if(calMonth<0){calMonth=11;calYear--}
+  renderCal();
+  document.getElementById('cal-detail').style.display='none';
+}
+
+// Init calendar
+(function(){const n=new Date();calMonth=n.getMonth();calYear=n.getFullYear();renderCal()})();
+
+/* ===== JOIN SESSION MODAL ===== */
+let jmChoice='';
+function openJoinModal(){
+  const m=document.getElementById('join-modal');
+  document.getElementById('jm-step1').style.display='block';
+  document.getElementById('jm-step2').style.display='none';
+  document.getElementById('jm-step3').style.display='none';
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeJoinModal(){
+  document.getElementById('join-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function jmSelect(choice){
+  jmChoice=choice;
+  document.getElementById('jm-step1').style.display='none';
+  document.getElementById('jm-step2').style.display='block';
+  const t=document.getElementById('jm-step2-title');
+  const d=document.getElementById('jm-step2-desc');
+  const lp=document.getElementById('jm-location-pick');
+  if(choice==='talk'){
+    t.textContent='Talk to Someone';
+    d.textContent='Fill in your details and a Heartfulness trainer will reach out to you.';
+    lp.style.display='none';
+  } else if(choice==='attend'){
+    t.textContent='Attend a Meditation or Event';
+    d.textContent='Let us know you\'re coming and we\'ll send you all the details.';
+    lp.style.display='block';
+  } else {
+    t.textContent='Select a Location';
+    d.textContent='Choose your preferred center and we\'ll share directions and session times.';
+    lp.style.display='block';
+  }
+}
+function jmBack(){
+  document.getElementById('jm-step2').style.display='none';
+  document.getElementById('jm-step1').style.display='block';
+}
+function jmSubmit(e){
+  e.preventDefault();
+  const name=document.getElementById('jm-name').value;
+  const email=document.getElementById('jm-email').value;
+  const msg=document.getElementById('jm-msg').value;
+  const locRadio=document.querySelector('input[name="jm-loc"]:checked');
+  const loc=locRadio?locRadio.value:'';
+  const labels={'talk':'Talk to Someone','attend':'Attend a Meditation/Event','location':'Select a Location'};
+  const subject=encodeURIComponent('Heartfulness Chicago — '+labels[jmChoice]);
+  let body='Name: '+name+'\nEmail: '+email+'\nRequest: '+labels[jmChoice];
+  if(loc)body+='\nPreferred Location: '+loc;
+  if(msg)body+='\nMessage: '+msg;
+  // Open mailto
+  window.location.href='mailto:info@chicagoheartfulness.org?subject='+subject+'&body='+encodeURIComponent(body);
+  // Show confirmation
+  document.getElementById('jm-step2').style.display='none';
+  document.getElementById('jm-step3').style.display='block';
+  // Reset form
+  document.getElementById('jm-form').reset();
+}
 </script>
 </body>
 </html>
