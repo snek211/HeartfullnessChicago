@@ -335,7 +335,9 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
 .lm svg{color:white}
 .lcard h4{font-family:var(--font-body);font-size:.92rem;font-weight:600;margin-bottom:1px}
 .lcard p{font-size:.8rem;color:var(--g400)}
-.map-f{border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05);min-height:380px}
+.map-f{border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05);min-height:420px}
+.leaflet-popup-content-wrapper{border-radius:12px!important;box-shadow:0 6px 24px rgba(0,0,0,.12)!important;padding:4px!important}
+.leaflet-popup-tip{box-shadow:0 3px 8px rgba(0,0,0,.1)!important}
 
 /* Contact */
 .contact{padding:100px 0;background:var(--g50)}
@@ -700,7 +702,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <div class="about-ccard sr d2">
           <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <h4>Session Times</h4>
-          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM (In-Person)<br>Mon–Sat 6:30 AM (Zoom)</p>
+          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM<br>5 Locations across Chicagoland</p>
         </div>
       </div>
       <div class="about-social sr" style="text-align:center;margin-top:40px;">
@@ -758,7 +760,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="prac-num">02</div>
           <h3>Meditation</h3>
           <p>Suppose there is a divine light in your heart. With the gentle feeling of that light, the practice begins — and through pranahuti (yogic transmission), the experience deepens beyond what the mind can achieve alone.</p>
-          <p>This is what makes Heartfulness different from other meditation approaches. Our Chicago trainers transmit during every session — even on Zoom.</p>
+          <p>This is what makes Heartfulness different from other meditation approaches. Our trained practitioners transmit during every session across all five Chicagoland locations.</p>
           <div class="prac-checks">
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Unique yogic transmission (pranahuti)</div>
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Deep states from the very first session</div>
@@ -840,32 +842,42 @@ footer ul a:hover{color:var(--hf-teal-light)}
 
   <section class="sched">
     <div class="container">
-      <div class="sched-grid">
+      <div class="sched-grid" style="grid-template-columns:repeat(3,1fr)">
         <div class="scard sr">
-          <span class="badge">In-Person</span>
-          <h3>Sunday Group Meditation</h3>
+          <span class="badge">In-Person · Sundays</span>
+          <h3>Chicago Center</h3>
           <div class="stime">9:00 AM</div>
           <p>Start your week centered. Guided group meditation with yogic transmission by our Chicago trainers.</p>
           <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>3537 W Belden Ave, Chicago, IL 60647</span></div>
         </div>
         <div class="scard sr d1">
-          <span class="badge">Online — Zoom</span>
-          <h3>Daily Morning Meditation</h3>
-          <div class="stime">6:30 AM</div>
-          <p>Monday–Saturday. Begin each day with clarity. No experience needed — just join and be guided.</p>
-          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Meeting ID: 748 825 5077 · Passcode: 123456</span></div>
-        </div>
-        <div class="scard sr d2">
-          <span class="badge">In-Person</span>
-          <h3>Lombard Center Sessions</h3>
-          <div class="stime">By Appointment</div>
-          <p>One-on-one guided meditation with a certified trainer. Personal transmission for deeper experience.</p>
+          <span class="badge">In-Person · Sundays</span>
+          <h3>Lombard Center</h3>
+          <div class="stime">9:00 AM</div>
+          <p>Guided meditation with a certified trainer. Personal transmission for a deeper experience.</p>
           <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Suite #104, 350 W 22nd St, Lombard, IL 60148</span></div>
         </div>
-      </div>
-      <div class="zoom-bar sr">
-        <div class="zoom-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <div><h4>Can't make it in person?</h4><p>Join our Zoom sessions Monday–Saturday at 6:30 AM and Sundays at 9:00 AM. All you need is a quiet spot and an open heart.</p></div>
+        <div class="scard sr d2">
+          <span class="badge">In-Person · Sundays</span>
+          <h3>Lincolnshire Center</h3>
+          <div class="stime">9:00 AM</div>
+          <p>Meditation in a peaceful suburban setting. Yogic transmission offered by certified trainers.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>30 Riverwoods Rd, Lincolnshire, IL 60069</span></div>
+        </div>
+        <div class="scard sr d3">
+          <span class="badge">In-Person · Sundays</span>
+          <h3>Evanston Center</h3>
+          <div class="stime">9:00 AM</div>
+          <p>Join fellow meditators on the North Shore. Guided group meditation with yogic transmission.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>1030 Greenleaf Street, Evanston, IL 60202</span></div>
+        </div>
+        <div class="scard sr d4">
+          <span class="badge">In-Person</span>
+          <h3>Batavia Public Library</h3>
+          <div class="stime">Check Schedule</div>
+          <p>Heartfulness meditation sessions at the Batavia Public Library. Open to all — no signup needed.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>10 S. Batavia Ave, Batavia, IL 60510</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -875,12 +887,14 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <div class="sr" style="text-align:center"><div class="eyebrow" style="justify-content:center">Find Us</div><h2 class="heading">Our Chicago Area Centers</h2></div>
       <div class="loc-grid">
         <div class="loc-list">
-          <div class="lcard sr" onclick="focusMap('chicago')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">Click to view on map →</span></div></div>
-          <div class="lcard sr d1" onclick="focusMap('lombard')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">Click to view on map →</span></div></div>
-          <div class="lcard sr d2" onclick="focusMap('lincolnshire')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">Click to view on map →</span></div></div>
+          <div class="lcard sr" onclick="focusMap('chicago')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p></div></div>
+          <div class="lcard sr d1" onclick="focusMap('lombard')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p></div></div>
+          <div class="lcard sr d2" onclick="focusMap('lincolnshire')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p></div></div>
+          <div class="lcard sr d3" onclick="focusMap('evanston')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Evanston Center</h4><p>1030 Greenleaf Street, Evanston, IL 60202</p></div></div>
+          <div class="lcard sr d4" onclick="focusMap('batavia')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Batavia Public Library</h4><p>10 S. Batavia Ave, Batavia, IL 60510</p></div></div>
         </div>
         <div class="map-f sr d1" id="map-container">
-          <div id="leaflet-map" style="width:100%;height:100%;min-height:380px;border-radius:14px;z-index:1"></div>
+          <div id="leaflet-map" style="width:100%;height:100%;min-height:420px;border-radius:14px;z-index:1"></div>
         </div>
       </div>
     </div>
@@ -1017,16 +1031,15 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="ann-pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--hf-gold)" stroke="none"><path d="M16 2L7.5 10.5 2 12l10 10 1.5-5.5L22 8z"/></svg> Pinned</div>
           <div class="ann-date">Ongoing</div>
           <h3>Sunday Group Meditation — Every Week</h3>
-          <p>Join us every Sunday at 9:00 AM at the Chicago Center for guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
+          <p>Join us every Sunday at 9:00 AM across 5 locations: Chicago, Lombard, Lincolnshire, Evanston, and Batavia. Guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
           <div class="ann-tags"><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
         </div>
 
         <div class="ann-card sr d1">
-          <div class="ann-date">Every Mon–Sat</div>
-          <h3>Daily Morning Meditation on Zoom</h3>
-          <p>Start each day with clarity. Join our guided Zoom meditation at 6:30 AM. No experience needed — just join the call and we'll guide you through everything.</p>
-          <div class="ann-meta">Meeting ID: 748 825 5077 · Passcode: 123456</div>
-          <div class="ann-tags"><span class="ann-tag cyan">Online</span><span class="ann-tag cyan">Daily</span></div>
+          <div class="ann-date">Now Open</div>
+          <h3>New Locations: Evanston &amp; Batavia</h3>
+          <p>We're expanding! Join us at our new Evanston center (1030 Greenleaf St) every Sunday at 9 AM, or at the Batavia Public Library (10 S. Batavia Ave) — check the schedule for upcoming dates.</p>
+          <div class="ann-tags"><span class="ann-tag gold">New Location</span><span class="ann-tag teal">In-Person</span></div>
         </div>
 
         <div class="ann-card sr d2">
@@ -1119,7 +1132,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Chicago Center — 3537 W Belden Ave, Chicago, IL 60647" checked><span>Chicago Center</span></label>
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Lombard Center — Suite #104, 350 W 22nd St, Lombard, IL 60148"><span>Lombard Center</span></label>
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Lincolnshire Center — 30 Riverwoods Rd, Lincolnshire, IL 60069"><span>Lincolnshire Center</span></label>
-          <label class="jm-loc"><input type="radio" name="jm-loc" value="Online — Zoom"><span>Online (Zoom)</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Evanston Center — 1030 Greenleaf Street, Evanston, IL 60202"><span>Evanston Center</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Batavia Public Library — 10 S. Batavia Ave, Batavia, IL 60510"><span>Batavia Public Library</span></label>
         </div>
       </div>
       <form id="jm-form" onsubmit="jmSubmit(event)">
@@ -1201,15 +1215,14 @@ function getEventsForDate(y,m,d){
   const dt=new Date(y,m,d);
   const dow=dt.getDay(); // 0=Sun
   const evts=[];
-  // Sunday Group Meditation — every Sunday
-  if(dow===0) evts.push({name:'Sunday Group Meditation',time:'9:00 AM',loc:'Chicago Center',type:'in-person'});
-  // Daily Zoom Meditation — Mon-Sat
-  if(dow>=1&&dow<=6) evts.push({name:'Morning Meditation (Zoom)',time:'6:30 AM',loc:'Online — Zoom',type:'online'});
-  // Lombard sessions — every Wednesday
-  if(dow===3) evts.push({name:'Lombard Center Session',time:'7:00 PM',loc:'Lombard Center',type:'in-person'});
+  // Sunday Group Meditation — every Sunday at all locations
+  if(dow===0){
+    evts.push({name:'Chicago Center Meditation',time:'9:00 AM',loc:'Chicago Center',type:'in-person'});
+    evts.push({name:'Lombard Center Meditation',time:'9:00 AM',loc:'Lombard Center',type:'in-person'});
+    evts.push({name:'Lincolnshire Center Meditation',time:'9:00 AM',loc:'Lincolnshire Center',type:'in-person'});
+    evts.push({name:'Evanston Center Meditation',time:'9:00 AM',loc:'Evanston Center',type:'in-person'});
+  }
   // First Saturday: special workshop
-  const first=new Date(y,m,1).getDay();
-  const firstSat=first<=6?(6-first+1):1;
   if(dow===6&&d<=7) evts.push({name:'Newcomer Introduction Workshop',time:'10:00 AM',loc:'Chicago Center',type:'special'});
   return evts;
 }
@@ -1341,43 +1354,57 @@ function jmSubmit(e){
 /* ===== LEAFLET MAP ===== */
 let hfMap=null;
 const locations={
-  chicago:{lat:41.9218,lng:-87.7185,name:'Chicago Center',addr:'3537 W Belden Ave, Chicago, IL 60647'},
-  lombard:{lat:41.871,lng:-88.009,name:'Lombard Center',addr:'Suite #104, 350 W 22nd St, Lombard, IL 60148'},
-  lincolnshire:{lat:42.168,lng:-87.910,name:'Lincolnshire Center',addr:'30 Riverwoods Rd, Lincolnshire, IL 60069'}
+  chicago:{lat:41.9218,lng:-87.7185,name:'Chicago Center',addr:'3537 W Belden Ave, Chicago, IL 60647',time:'Sundays 9 AM'},
+  lombard:{lat:41.871,lng:-88.009,name:'Lombard Center',addr:'Suite #104, 350 W 22nd St, Lombard, IL 60148',time:'Sundays 9 AM'},
+  lincolnshire:{lat:42.168,lng:-87.910,name:'Lincolnshire Center',addr:'30 Riverwoods Rd, Lincolnshire, IL 60069',time:'Sundays 9 AM'},
+  evanston:{lat:42.0497,lng:-87.6867,name:'Evanston Center',addr:'1030 Greenleaf Street, Evanston, IL 60202',time:'Sundays 9 AM'},
+  batavia:{lat:41.8503,lng:-88.3126,name:'Batavia Public Library',addr:'10 S. Batavia Ave, Batavia, IL 60510',time:'Check Schedule'}
 };
 let hfMarkers={};
 
 function initLeafletMap(){
   const el=document.getElementById('leaflet-map');
   if(!el||hfMap)return;
-  // Center on Chicago area, zoomed out to show all 3
-  hfMap=L.map('leaflet-map',{scrollWheelZoom:false}).setView([41.98,-87.88],10);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution:'&copy; OpenStreetMap contributors',
-    maxZoom:18
+  hfMap=L.map('leaflet-map',{scrollWheelZoom:false}).setView([41.97,-87.90],9);
+
+  // CartoDB Voyager — clean, modern map style
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains:'abcd',
+    maxZoom:19
   }).addTo(hfMap);
 
   // Red pin icon
   const redPin=L.divIcon({
-    html:'<svg width="30" height="42" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 9 12 24 12 24s12-15 12-24c0-6.63-5.37-12-12-12zm0 16a4 4 0 110-8 4 4 0 010 8z" fill="#DC3232"/></svg>',
-    iconSize:[30,42],
-    iconAnchor:[15,42],
-    popupAnchor:[0,-36],
+    html:'<svg width="28" height="40" viewBox="0 0 28 40" xmlns="http://www.w3.org/2000/svg"><defs><filter id="ds" x="-20%" y="-10%" width="140%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter></defs><path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.27 21.73 0 14 0zm0 19a5 5 0 110-10 5 5 0 010 10z" fill="#DC3232" filter="url(#ds)"/><circle cx="14" cy="14" r="3" fill="white"/></svg>',
+    iconSize:[28,40],
+    iconAnchor:[14,40],
+    popupAnchor:[0,-34],
     className:''
   });
 
+  const bounds=[];
   Object.keys(locations).forEach(key=>{
     const loc=locations[key];
+    bounds.push([loc.lat,loc.lng]);
     const marker=L.marker([loc.lat,loc.lng],{icon:redPin}).addTo(hfMap);
-    marker.bindPopup('<strong style="font-size:14px">'+loc.name+'</strong><br><span style="color:#666;font-size:12px">'+loc.addr+'</span><br><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(loc.addr)+'" target="_blank" style="color:#00838F;font-size:12px;font-weight:600">Get Directions →</a>',{maxWidth:250});
+    marker.bindPopup(
+      '<div style="font-family:Inter,sans-serif;min-width:180px">'+
+      '<strong style="font-size:14px;color:#1A1816">'+loc.name+'</strong>'+
+      '<div style="color:#8A8478;font-size:12px;margin:4px 0 2px">'+loc.addr+'</div>'+
+      '<div style="color:#00838F;font-size:12px;font-weight:600;margin-bottom:6px">'+loc.time+'</div>'+
+      '<a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(loc.addr)+'" target="_blank" style="color:#00838F;font-size:12px;font-weight:600;text-decoration:none">Get Directions →</a>'+
+      '</div>',{maxWidth:260,className:'hf-popup'});
     hfMarkers[key]=marker;
   });
+  // Fit map to show all markers with padding
+  if(bounds.length)hfMap.fitBounds(bounds,{padding:[40,40]});
 }
 
 function focusMap(loc){
   if(!hfMap)initLeafletMap();
   if(hfMap&&locations[loc]){
-    hfMap.flyTo([locations[loc].lat,locations[loc].lng],15,{duration:1.2});
+    hfMap.flyTo([locations[loc].lat,locations[loc].lng],14,{duration:1.2});
     setTimeout(()=>{if(hfMarkers[loc])hfMarkers[loc].openPopup()},1300);
   }
   if(event)event.preventDefault();
