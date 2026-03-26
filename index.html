@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Heartfulness Chicago — Free Meditation for Inner Peace & Balance</title>
 <meta name="description" content="Join Chicago's Heartfulness meditation community. Free group meditation sessions, workshops, and community events across Chicago, Lombard, and beyond.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -333,8 +335,7 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
 .lm svg{color:white}
 .lcard h4{font-family:var(--font-body);font-size:.92rem;font-weight:600;margin-bottom:1px}
 .lcard p{font-size:.8rem;color:var(--g400)}
-.map-f{border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05);min-height:340px}
-.map-f iframe{width:100%;height:100%;min-height:340px;border:none}
+.map-f{border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05);min-height:380px}
 
 /* Contact */
 .contact{padding:100px 0;background:var(--g50)}
@@ -418,10 +419,12 @@ footer ul a:hover{color:var(--hf-teal-light)}
 .about-ccard:hover{box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
 .about-ccard-ic{width:52px;height:52px;border-radius:14px;background:rgba(0,131,143,.06);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .about-ccard h4{margin-bottom:8px;color:var(--g800)}
-.soc-a.lg{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;background:var(--g50);border:1px solid var(--g100);color:var(--g600);text-decoration:none;font-size:.88rem;font-weight:500;transition:all .25s ease}
-.soc-a.lg svg{width:20px;height:20px;fill:var(--g500);stroke:none}
+.soc-a.lg{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;background:var(--g50);border:1px solid var(--g100);color:var(--g500);text-decoration:none;font-size:.88rem;font-weight:500;transition:all .25s ease}
+.soc-a.lg svg{width:20px;height:20px;color:var(--g500)}
+.soc-a.lg span{color:var(--g600)}
 .soc-a.lg:hover{background:var(--hf-teal);color:white;border-color:var(--hf-teal)}
-.soc-a.lg:hover svg{fill:white}
+.soc-a.lg:hover svg{color:white}
+.soc-a.lg:hover span{color:white}
 
 /* ============================================
    CALENDAR
@@ -519,14 +522,13 @@ footer ul a:hover{color:var(--hf-teal-light)}
 <nav id="nav">
   <div class="nav-in">
     <a class="logo" onclick="go('home')">
-      <img src="images/logo.png" alt="Heartfulness Sahaj Marg Meditation" style="height:48px;width:auto;">
+      <img src="images/logo.png" alt="Heartfulness Sahaj Marg Meditation" style="height:62px;width:auto;">
     </a>
     <div class="nav-menu" id="nm">
       <span class="nv on" onclick="go('home')">Home</span>
       <span class="nv" onclick="go('about')">About</span>
       <span class="nv" onclick="go('meditation')">Meditation</span>
       <span class="nv" onclick="go('sessions')">Sessions</span>
-      <span class="nv" onclick="go('community')">Community</span>
       <span class="nv" onclick="go('announcements')">Announcements</span>
       <a class="nv-donate" href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener">Donate</a>
       <span class="nv-cta" onclick="openJoinModal()">Join Free Session</span>
@@ -539,7 +541,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <span class="nv" onclick="go('about');closeMob()">About</span>
   <span class="nv" onclick="go('meditation');closeMob()">Meditation</span>
   <span class="nv" onclick="go('sessions');closeMob()">Sessions</span>
-  <span class="nv" onclick="go('community');closeMob()">Community</span>
   <span class="nv" onclick="go('announcements');closeMob()">Announcements</span>
   <a class="nv-donate" href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener" style="text-align:center;padding:14px;font-size:1rem;border-radius:12px;margin-top:8px">Donate</a>
   <span class="nv-cta" onclick="openJoinModal();closeMob()">Join Free Session</span>
@@ -568,14 +569,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <div class="hero-vis">
         <div class="hero-img">
           <img src="images/community-fair-2.jpg" alt="Chicago Heartfulness community — free relaxation at community fair">
-        </div>
-        <div class="fcard ft">
-          <div class="fi teal">🧘</div>
-          <div class="fc-t"><strong>Sunday Meditation</strong><span>9 AM — Chicago</span></div>
-        </div>
-        <div class="fcard fb">
-          <div class="fi gold">🏡</div>
-          <div class="fc-t"><strong>3 Local Centers</strong><span>Chicago · Lombard · Lincolnshire</span></div>
         </div>
       </div>
     </div>
@@ -638,7 +631,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
     <div class="container">
       <div class="cta-card sr">
         <div><h2>Your First Session Is This Sunday</h2><p>9:00 AM at our Chicago Center. No signup needed — just show up with an open heart. We'll guide you through everything.</p></div>
-        <div><a class="btn btn-w" onclick="openJoinModal()">Get Started</a></div>
+        <div><a class="btn btn-w" href="javascript:void(0)" onclick="openJoinModal()" style="cursor:pointer">Get Started</a></div>
       </div>
     </div>
   </section>
@@ -718,10 +711,10 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <div class="about-social sr" style="text-align:center;margin-top:40px;">
         <p style="font-weight:500;color:var(--g600);margin-bottom:16px;">Follow us on social media</p>
         <div class="soc-row" style="justify-content:center;gap:16px;">
-          <a href="https://www.facebook.com/heartfulnesschicago/" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><span>Facebook</span></a>
-          <a href="https://twitter.com/heartfulness_il" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"/></svg><span>Twitter</span></a>
-          <a href="https://www.youtube.com/heartfulness" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48" fill="var(--g500)"/></svg><span>YouTube</span></a>
-          <a href="https://www.instagram.com/heartfulness/" class="soc-a lg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+          <a href="https://www.facebook.com/heartfulnesschicago/" class="soc-a lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><span>Facebook</span></a>
+          <a href="https://twitter.com/heartfulness_il" class="soc-a lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"/></svg><span>Twitter</span></a>
+          <a href="https://www.youtube.com/heartfulness" class="soc-a lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48"/></svg><span>YouTube</span></a>
+          <a href="https://www.instagram.com/heartfulness/" class="soc-a lg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg><span>Instagram</span></a>
         </div>
       </div>
     </div>
@@ -887,12 +880,12 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <div class="sr" style="text-align:center"><div class="eyebrow" style="justify-content:center">Find Us</div><h2 class="heading">Our Chicago Area Centers</h2></div>
       <div class="loc-grid">
         <div class="loc-list">
-          <a class="lcard sr" href="https://www.google.com/maps/search/?api=1&query=3537+W+Belden+Ave+Chicago+IL+60647" target="_blank" rel="noopener" onclick="focusMap('chicago')" style="text-decoration:none;color:inherit;cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">View on Google Maps →</span></div></a>
-          <a class="lcard sr d1" href="https://www.google.com/maps/search/?api=1&query=350+W+22nd+St+Suite+104+Lombard+IL+60148" target="_blank" rel="noopener" onclick="focusMap('lombard')" style="text-decoration:none;color:inherit;cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">View on Google Maps →</span></div></a>
-          <a class="lcard sr d2" href="https://www.google.com/maps/search/?api=1&query=30+Riverwoods+Rd+Lincolnshire+IL+60069" target="_blank" rel="noopener" onclick="focusMap('lincolnshire')" style="text-decoration:none;color:inherit;cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">View on Google Maps →</span></div></a>
+          <div class="lcard sr" onclick="focusMap('chicago')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">Click to view on map →</span></div></div>
+          <div class="lcard sr d1" onclick="focusMap('lombard')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">Click to view on map →</span></div></div>
+          <div class="lcard sr d2" onclick="focusMap('lincolnshire')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">Click to view on map →</span></div></div>
         </div>
         <div class="map-f sr d1" id="map-container">
-          <iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d380000!2d-87.95!3d41.97!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL!5e0!3m2!1sen!2sus" style="width:100%;height:100%;min-height:340px;border:none;border-radius:14px" allowfullscreen loading="lazy"></iframe>
+          <div id="leaflet-map" style="width:100%;height:100%;min-height:380px;border-radius:14px;z-index:1"></div>
         </div>
       </div>
     </div>
@@ -1157,8 +1150,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <div class="container">
     <div class="ft-grid">
       <div><div class="ft-brand">heartfulness <span class="c">chicago</span></div><p class="ft-desc">A global not-for-profit dedicated to uplifting communities through heart-based meditation. All services free, always.</p><p class="ft-desc" style="font-style:italic;opacity:.6;font-size:.8rem">purity weaves destiny</p></div>
-      <div><h5>Explore</h5><ul><li><a href="#" onclick="go('home');return false">Home</a></li><li><a href="#" onclick="go('about');return false">About</a></li><li><a href="#" onclick="go('meditation');return false">Meditation</a></li><li><a href="#" onclick="go('sessions');return false">Sessions</a></li><li><a href="#" onclick="go('community');return false">Community</a></li><li><a href="#" onclick="go('announcements');return false">Announcements</a></li></ul></div>
-      <div><h5>Resources</h5><ul><li><a href="https://heartfulness.org/us/" target="_blank" rel="noopener">Heartfulness US</a></li><li><a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a></li><li><a href="https://www.heartfulnessapp.org/" target="_blank" rel="noopener">Download App</a></li><li><a href="https://heartfulness.org/us/videos/" target="_blank" rel="noopener">Videos</a></li></ul></div>
+      <div><h5>Explore</h5><ul><li><a href="#" onclick="go('home');return false">Home</a></li><li><a href="#" onclick="go('about');return false">About</a></li><li><a href="#" onclick="go('meditation');return false">Meditation</a></li><li><a href="#" onclick="go('sessions');return false">Sessions</a></li><li><a href="#" onclick="go('announcements');return false">Announcements</a></li></ul></div>
+      <div><h5>Resources</h5><ul><li><a href="#" onclick="go('community');return false">Community</a></li><li><a href="https://heartfulness.org/us/" target="_blank" rel="noopener">Heartfulness US</a></li><li><a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a></li><li><a href="https://www.heartfulnessapp.org/" target="_blank" rel="noopener">Download App</a></li><li><a href="https://heartfulness.org/us/videos/" target="_blank" rel="noopener">Videos</a></li></ul></div>
       <div><h5>Connect</h5><ul><li><a href="https://www.facebook.com/heartfulnesschicago/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://twitter.com/heartfulness_il" target="_blank" rel="noopener">Twitter</a></li><li><a href="https://www.youtube.com/heartfulness" target="_blank" rel="noopener">YouTube</a></li><li><a href="mailto:info@chicagoheartfulness.org">Email Us</a></li><li><a href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener">Donate</a></li></ul></div>
     </div>
     <div class="ft-bot"><span>&copy; 2026 Heartfulness Chicago. All services free of charge.</span><span>A chapter of the <a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a> · Sahaj Marg Meditation</span></div>
@@ -1350,16 +1343,62 @@ function jmSubmit(e){
   document.getElementById('jm-form').reset();
 }
 
-/* ===== MAP: Focus on location when card is clicked ===== */
-const mapUrls={
-  chicago:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968!2d-87.7185!3d41.9218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fcd6d6b6b6b6b%3A0x0!2s3537+W+Belden+Ave%2C+Chicago%2C+IL+60647!5e0!3m2!1sen!2sus',
-  lombard:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968!2d-88.009!3d41.871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e4f0e0e0e0e0e%3A0x0!2s350+W+22nd+St%2C+Lombard%2C+IL+60148!5e0!3m2!1sen!2sus',
-  lincolnshire:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968!2d-87.910!3d42.168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fae0e0e0e0e0e%3A0x0!2s30+Riverwoods+Rd%2C+Lincolnshire%2C+IL+60069!5e0!3m2!1sen!2sus'
+/* ===== LEAFLET MAP ===== */
+let hfMap=null;
+const locations={
+  chicago:{lat:41.9218,lng:-87.7185,name:'Chicago Center',addr:'3537 W Belden Ave, Chicago, IL 60647'},
+  lombard:{lat:41.871,lng:-88.009,name:'Lombard Center',addr:'Suite #104, 350 W 22nd St, Lombard, IL 60148'},
+  lincolnshire:{lat:42.168,lng:-87.910,name:'Lincolnshire Center',addr:'30 Riverwoods Rd, Lincolnshire, IL 60069'}
 };
-function focusMap(loc){
-  const f=document.getElementById('gmap');
-  if(f&&mapUrls[loc]){f.src=mapUrls[loc];event.preventDefault()}
+let hfMarkers={};
+
+function initLeafletMap(){
+  const el=document.getElementById('leaflet-map');
+  if(!el||hfMap)return;
+  // Center on Chicago area, zoomed out to show all 3
+  hfMap=L.map('leaflet-map',{scrollWheelZoom:false}).setView([41.98,-87.88],10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; OpenStreetMap contributors',
+    maxZoom:18
+  }).addTo(hfMap);
+
+  // Red pin icon
+  const redPin=L.divIcon({
+    html:'<svg width="30" height="42" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 9 12 24 12 24s12-15 12-24c0-6.63-5.37-12-12-12zm0 16a4 4 0 110-8 4 4 0 010 8z" fill="#DC3232"/></svg>',
+    iconSize:[30,42],
+    iconAnchor:[15,42],
+    popupAnchor:[0,-36],
+    className:''
+  });
+
+  Object.keys(locations).forEach(key=>{
+    const loc=locations[key];
+    const marker=L.marker([loc.lat,loc.lng],{icon:redPin}).addTo(hfMap);
+    marker.bindPopup('<strong style="font-size:14px">'+loc.name+'</strong><br><span style="color:#666;font-size:12px">'+loc.addr+'</span><br><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(loc.addr)+'" target="_blank" style="color:#00838F;font-size:12px;font-weight:600">Get Directions →</a>',{maxWidth:250});
+    hfMarkers[key]=marker;
+  });
 }
+
+function focusMap(loc){
+  if(!hfMap)initLeafletMap();
+  if(hfMap&&locations[loc]){
+    hfMap.flyTo([locations[loc].lat,locations[loc].lng],15,{duration:1.2});
+    setTimeout(()=>{if(hfMarkers[loc])hfMarkers[loc].openPopup()},1300);
+  }
+  if(event)event.preventDefault();
+}
+
+// Init map when sessions page becomes visible
+const mapObs=new MutationObserver(()=>{
+  const sessPage=document.getElementById('p-sessions');
+  if(sessPage&&sessPage.classList.contains('on')){
+    setTimeout(()=>{
+      initLeafletMap();
+      if(hfMap)hfMap.invalidateSize();
+    },400);
+  }
+});
+mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
 </script>
 </body>
 </html>
