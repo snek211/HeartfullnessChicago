@@ -82,6 +82,8 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
 .nv:hover,.nv.on{color:var(--hf-teal);background:rgba(0,131,143,.06)}
 .nv.on{position:relative}
 .nv.on::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:18px;height:2px;background:var(--hf-teal);border-radius:2px}
+.nv-donate{margin-left:8px;padding:8px 18px;font-size:.82rem;font-weight:600;color:var(--hf-gold);border:1.5px solid var(--hf-gold);border-radius:10px;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.nv-donate:hover{background:var(--hf-gold);color:white}
 .nv-cta{margin-left:10px;padding:9px 22px;font-size:.86rem;font-weight:600;color:var(--white);background:var(--hf-teal);border-radius:10px;transition:all .3s;cursor:pointer}
 .nv-cta:hover{background:var(--hf-teal-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,131,143,.3)}
 .mob-btn{display:none;flex-direction:column;gap:5px;padding:8px}
@@ -158,15 +160,22 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
    HOME — FEATURES
    ============================================ */
 .features{padding:72px 0;background:var(--white);border-top:1px solid var(--g100);border-bottom:1px solid var(--g100)}
-.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-.feat{text-align:center;padding:24px 14px}
-.feat-ic{width:52px;height:52px;margin:0 auto 14px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
-.feat:nth-child(1) .feat-ic{background:rgba(0,131,143,.08)}
-.feat:nth-child(2) .feat-ic{background:rgba(200,150,50,.08)}
-.feat:nth-child(3) .feat-ic{background:rgba(200,100,120,.08)}
-.feat:nth-child(4) .feat-ic{background:rgba(120,100,180,.08)}
-.feat h4{font-size:.95rem;margin-bottom:4px;font-family:var(--font-body);font-weight:600}
-.feat p{font-size:.82rem;color:var(--g400);font-weight:300}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat{text-align:left;padding:28px 24px;background:var(--g50);border-radius:18px;border:1px solid var(--g100);position:relative;overflow:hidden;transition:all .35s var(--ease)}
+.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0;transition:height .3s ease}
+.feat:nth-child(1)::before{background:linear-gradient(135deg,#00838F,#26A0AA)}
+.feat:nth-child(2)::before{background:linear-gradient(135deg,#C89632,#E0B050)}
+.feat:nth-child(3)::before{background:linear-gradient(135deg,#D4748A,#E8A0B0)}
+.feat:nth-child(4)::before{background:linear-gradient(135deg,#7B68AE,#9B88CE)}
+.feat:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.06);border-color:transparent;background:var(--white)}
+.feat:hover::before{height:4px}
+.feat-ic{width:46px;height:46px;margin-bottom:16px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.feat:nth-child(1) .feat-ic{background:rgba(0,131,143,.1)}
+.feat:nth-child(2) .feat-ic{background:rgba(200,150,50,.1)}
+.feat:nth-child(3) .feat-ic{background:rgba(212,116,138,.1)}
+.feat:nth-child(4) .feat-ic{background:rgba(123,104,174,.1)}
+.feat h4{font-size:.95rem;margin-bottom:6px;font-family:var(--font-body);font-weight:600;color:var(--g800)}
+.feat p{font-size:.82rem;color:var(--g400);font-weight:300;line-height:1.6}
 
 /* ============================================
    HOME — COMMUNITY GALLERY
@@ -226,10 +235,19 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
 /* Values grid */
 .vals{padding:100px 0;background:var(--g50)}
 .vals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
-.vcard{background:var(--white);border-radius:18px;padding:36px 28px;border:1px solid var(--g100);transition:all .3s var(--ease)}
+.vcard{background:var(--white);border-radius:18px;padding:32px 28px;border:1px solid var(--g100);transition:all .3s var(--ease);position:relative;overflow:hidden}
+.vcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s ease}
 .vcard:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(0,0,0,.05);border-color:transparent}
-.vcard-ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:18px}
-.vcard h4{font-family:var(--font-body);font-weight:600;font-size:1rem;margin-bottom:8px}
+.vcard:hover::after{opacity:1}
+.vcard:nth-child(1)::after{background:var(--hf-teal)}
+.vcard:nth-child(2)::after{background:var(--hf-gold)}
+.vcard:nth-child(3)::after{background:#6BAF6B}
+.vcard:nth-child(4)::after{background:#7B68AE}
+.vcard:nth-child(5)::after{background:var(--hf-teal)}
+.vcard:nth-child(6)::after{background:var(--hf-gold)}
+.vcard-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.vcard-ic svg{width:24px;height:24px}
+.vcard h4{font-family:var(--font-body);font-weight:600;font-size:1rem;margin-bottom:8px;color:var(--g800)}
 .vcard p{font-size:.88rem;color:var(--g400);font-weight:300;line-height:1.7}
 
 /* Community in action */
@@ -310,7 +328,8 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
 .loc-list{display:flex;flex-direction:column;gap:14px}
 .lcard{background:var(--white);border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px;border:1px solid var(--g100);transition:all .3s}
 .lcard:hover{box-shadow:0 8px 22px rgba(0,0,0,.04);transform:translateX(3px)}
-.lm{width:42px;height:42px;border-radius:10px;background:var(--hf-teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm{width:42px;height:42px;border-radius:10px;background:rgba(220,50,50,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm svg{stroke:#DC3232}
 .lm svg{color:white}
 .lcard h4{font-family:var(--font-body);font-size:.92rem;font-weight:600;margin-bottom:1px}
 .lcard p{font-size:.8rem;color:var(--g400)}
@@ -462,10 +481,30 @@ footer ul a:hover{color:var(--hf-teal-light)}
 .jm-loc input[type="radio"]{accent-color:var(--hf-teal)}
 .jm-loc:has(input:checked){border-color:var(--hf-teal);background:rgba(0,131,143,.04);color:var(--g800);font-weight:500}
 
+/* ============================================
+   ANNOUNCEMENTS PAGE
+   ============================================ */
+.ann-section{padding:80px 0 0}
+.ann-grid{display:flex;flex-direction:column;gap:20px;max-width:760px;margin:0 auto}
+.ann-card{background:var(--white);border:1px solid var(--g100);border-radius:18px;padding:32px;transition:all .3s var(--ease);position:relative}
+.ann-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.05);transform:translateY(-2px)}
+.ann-card.pinned{border-left:4px solid var(--hf-gold);background:linear-gradient(135deg,rgba(200,150,50,.02),transparent)}
+.ann-pin{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;color:var(--hf-gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.ann-date{font-size:.78rem;font-weight:600;color:var(--hf-teal);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+.ann-card h3{font-family:var(--font-display);font-size:1.2rem;color:var(--g800);margin-bottom:10px;font-weight:500}
+.ann-card p{font-size:.9rem;color:var(--g400);line-height:1.7;font-weight:300}
+.ann-meta{font-size:.82rem;color:var(--g400);margin-top:8px;padding:8px 12px;background:var(--g50);border-radius:8px;font-family:var(--font-body)}
+.ann-tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.ann-tag{font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.ann-tag.teal{background:rgba(0,131,143,.08);color:var(--hf-teal)}
+.ann-tag.cyan{background:rgba(77,208,225,.1);color:#0097A7}
+.ann-tag.gold{background:rgba(200,150,50,.1);color:var(--hf-gold)}
+
 @media(max-width:768px){
   .about-contact-grid{grid-template-columns:1fr}
   .modal-card{padding:24px}
   .cal-wrap{padding:20px}
+  .ann-card{padding:24px}
 }
 </style>
 </head>
@@ -480,7 +519,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
 <nav id="nav">
   <div class="nav-in">
     <a class="logo" onclick="go('home')">
-      <img src="images/logo.png" alt="Heartfulness Sahaj Marg Meditation" style="height:38px;width:auto;">
+      <img src="images/logo.png" alt="Heartfulness Sahaj Marg Meditation" style="height:48px;width:auto;">
     </a>
     <div class="nav-menu" id="nm">
       <span class="nv on" onclick="go('home')">Home</span>
@@ -488,6 +527,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <span class="nv" onclick="go('meditation')">Meditation</span>
       <span class="nv" onclick="go('sessions')">Sessions</span>
       <span class="nv" onclick="go('community')">Community</span>
+      <span class="nv" onclick="go('announcements')">Announcements</span>
+      <a class="nv-donate" href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener">Donate</a>
       <span class="nv-cta" onclick="openJoinModal()">Join Free Session</span>
     </div>
     <button class="mob-btn" id="mb" onclick="togMob()"><span></span><span></span><span></span></button>
@@ -499,6 +540,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <span class="nv" onclick="go('meditation');closeMob()">Meditation</span>
   <span class="nv" onclick="go('sessions');closeMob()">Sessions</span>
   <span class="nv" onclick="go('community');closeMob()">Community</span>
+  <span class="nv" onclick="go('announcements');closeMob()">Announcements</span>
+  <a class="nv-donate" href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener" style="text-align:center;padding:14px;font-size:1rem;border-radius:12px;margin-top:8px">Donate</a>
   <span class="nv-cta" onclick="openJoinModal();closeMob()">Join Free Session</span>
 </div>
 
@@ -542,10 +585,10 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <section class="features">
     <div class="container">
       <div class="feat-grid">
-        <div class="feat sr"><div class="feat-ic">🌿</div><h4>Relaxation</h4><p>Release tension, calm the body</p></div>
-        <div class="feat sr d1"><div class="feat-ic">💛</div><h4>Meditation</h4><p>Dive deep with yogic transmission</p></div>
-        <div class="feat sr d2"><div class="feat-ic">🌸</div><h4>Cleaning</h4><p>Detox the mind, feel lighter</p></div>
-        <div class="feat sr d3"><div class="feat-ic">✨</div><h4>Inner Connect</h4><p>Listen to your heart's voice</p></div>
+        <div class="feat sr"><div class="feat-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00838F" stroke-width="1.8"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg></div><h4>Relaxation</h4><p>Release tension and calm the body before meditation begins</p></div>
+        <div class="feat sr d1"><div class="feat-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C89632" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h4>Meditation</h4><p>Dive deep with yogic transmission from the heart</p></div>
+        <div class="feat sr d2"><div class="feat-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4748A" stroke-width="1.8"><path d="M12 3c-4.97 0-9 4.03-9 9v7h4v-7a5 5 0 0110 0v7h4v-7c0-4.97-4.03-9-9-9z"/><circle cx="12" cy="19" r="2"/></svg></div><h4>Cleaning</h4><p>Detox the mind and feel lighter every evening</p></div>
+        <div class="feat sr d3"><div class="feat-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B68AE" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h4>Inner Connect</h4><p>Listen to your heart's voice at bedtime</p></div>
       </div>
     </div>
   </section>
@@ -637,12 +680,12 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <p class="subtext" style="margin:0 auto">Heartfulness extends well beyond sitting with your eyes closed. Here's what else we offer to help you grow.</p>
       </div>
       <div class="vals-grid">
-        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">🧠</div><h4>Brighter Minds</h4><p>A cognitive development program for children aged 5–15 that enhances intuition, focus, and emotional balance through guided activities and relaxation techniques.</p></div>
-        <div class="vcard sr d1"><div class="vcard-ic" style="background:rgba(200,150,50,.08)">👥</div><h4>Personal Trainer Support</h4><p>Every practitioner gets access to a certified trainer for free, one-on-one guidance. They provide individual sittings and personal support on your journey.</p></div>
-        <div class="vcard sr d2"><div class="vcard-ic" style="background:rgba(120,100,180,.08)">🌱</div><h4>Green Kanha Initiative</h4><p>Heartfulness maintains one of the world's largest meditation centers and has planted millions of trees — connecting inner transformation with environmental stewardship.</p></div>
-        <div class="vcard sr d3"><div class="vcard-ic" style="background:rgba(200,100,120,.08)">🎓</div><h4>Youth Empowerment</h4><p>Programs for college students and young professionals focused on emotional intelligence, purpose-driven living, and building resilience through meditation.</p></div>
-        <div class="vcard sr d4"><div class="vcard-ic" style="background:rgba(0,131,143,.08)">🔬</div><h4>Research-Backed Wellness</h4><p>Published studies in peer-reviewed journals show Heartfulness reduces burnout, improves sleep quality, and enhances emotional regulation and well-being.</p></div>
-        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(100,140,60,.08)">📖</div><h4>Masterclasses & Workshops</h4><p>Topics like stress resilience, mindful parenting, work-life harmony, and natural living — practical tools you can apply immediately in daily life.</p></div>
+        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(0,131,143,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#00838F" stroke-width="1.8"><path d="M12 2a5 5 0 015 5c0 2.76-2.24 5-5 5s-5-2.24-5-5a5 5 0 015-5z"/><path d="M5 18.5c0-3 3.13-5.5 7-5.5s7 2.5 7 5.5"/><circle cx="8" cy="7" r="1" fill="#00838F"/><circle cx="16" cy="7" r="1" fill="#00838F"/><path d="M9 15l3-2 3 2" stroke-linecap="round"/></svg></div><h4>Brighter Minds</h4><p>A cognitive development program for children aged 5–15 that enhances intuition, focus, and emotional balance through guided activities and relaxation techniques.</p></div>
+        <div class="vcard sr d1"><div class="vcard-ic" style="background:rgba(200,150,50,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C89632" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.87"/></svg></div><h4>Personal Trainer Support</h4><p>Every practitioner gets access to a certified trainer for free, one-on-one guidance. They provide individual sittings and personal support on your journey.</p></div>
+        <div class="vcard sr d2"><div class="vcard-ic" style="background:rgba(107,175,107,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#6BAF6B" stroke-width="1.8"><path d="M12 22c-4-3-8-7-8-12a8 8 0 0116 0c0 5-4 9-8 12z"/><path d="M12 6v8"/><path d="M9 10l3-4 3 4"/><path d="M8 14l4 2 4-2"/></svg></div><h4>Green Kanha Initiative</h4><p>Heartfulness maintains one of the world's largest meditation centers and has planted millions of trees — connecting inner transformation with environmental stewardship.</p></div>
+        <div class="vcard sr d3"><div class="vcard-ic" style="background:rgba(123,104,174,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#7B68AE" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2.69 3 6 3s6-1 6-3v-5"/></svg></div><h4>Youth Empowerment</h4><p>Programs for college students and young professionals focused on emotional intelligence, purpose-driven living, and building resilience through meditation.</p></div>
+        <div class="vcard sr d4"><div class="vcard-ic" style="background:rgba(0,131,143,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#00838F" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M8 2h8"/><path d="M7 21.5l2-3"/><path d="M17 21.5l-2-3"/></svg></div><h4>Research-Backed Wellness</h4><p>Published studies in peer-reviewed journals show Heartfulness reduces burnout, improves sleep quality, and enhances emotional regulation and well-being.</p></div>
+        <div class="vcard sr"><div class="vcard-ic" style="background:rgba(200,150,50,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C89632" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8"/><path d="M8 11h5"/></svg></div><h4>Masterclasses & Workshops</h4><p>Topics like stress resilience, mindful parenting, work-life harmony, and natural living — practical tools you can apply immediately in daily life.</p></div>
       </div>
     </div>
   </section>
@@ -839,50 +882,18 @@ footer ul a:hover{color:var(--hf-teal-light)}
     </div>
   </section>
 
-  <!-- INTERACTIVE CALENDAR -->
-  <section class="cal-section">
-    <div class="container">
-      <div class="sr" style="text-align:center">
-        <div class="eyebrow" style="justify-content:center">Events & Schedule</div>
-        <h2 class="heading">Upcoming Sessions & Events</h2>
-        <p class="subtext" style="margin:0 auto">Browse our monthly calendar. Click any highlighted day to see what's happening.</p>
-      </div>
-      <div class="cal-wrap sr d1">
-        <div class="cal-header">
-          <button class="cal-nav" id="cal-prev" onclick="calNav(-1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <h3 id="cal-title"></h3>
-          <button class="cal-nav" id="cal-next" onclick="calNav(1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
-        </div>
-        <div class="cal-days">
-          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-        </div>
-        <div class="cal-grid" id="cal-grid"></div>
-        <div class="cal-legend">
-          <span><span class="legend-dot" style="background:var(--hf-teal)"></span>In-Person Session</span>
-          <span><span class="legend-dot" style="background:var(--hf-cyan)"></span>Online / Zoom</span>
-          <span><span class="legend-dot" style="background:var(--hf-gold)"></span>Special Event</span>
-        </div>
-      </div>
-      <div class="cal-detail" id="cal-detail" style="display:none">
-        <div class="cal-detail-head">
-          <h4 id="cal-detail-date"></h4>
-          <button onclick="document.getElementById('cal-detail').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--g400);font-size:1.2rem">&times;</button>
-        </div>
-        <div id="cal-detail-events"></div>
-      </div>
-    </div>
-  </section>
-
   <section class="locs">
     <div class="container">
       <div class="sr" style="text-align:center"><div class="eyebrow" style="justify-content:center">Find Us</div><h2 class="heading">Our Chicago Area Centers</h2></div>
       <div class="loc-grid">
         <div class="loc-list">
-          <div class="lcard sr"><div class="lm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p></div></div>
-          <div class="lcard sr d1"><div class="lm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p></div></div>
-          <div class="lcard sr d2"><div class="lm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p></div></div>
+          <a class="lcard sr" href="https://www.google.com/maps/search/?api=1&query=3537+W+Belden+Ave+Chicago+IL+60647" target="_blank" rel="noopener" onclick="focusMap('chicago')" style="text-decoration:none;color:inherit;cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Chicago Center</h4><p>3537 W Belden Ave, Chicago, IL 60647</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">View on Google Maps →</span></div></a>
+          <a class="lcard sr d1" href="https://www.google.com/maps/search/?api=1&query=350+W+22nd+St+Suite+104+Lombard+IL+60148" target="_blank" rel="noopener" onclick="focusMap('lombard')" style="text-decoration:none;color:inherit;cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lombard Center</h4><p>Suite #104, 350 W 22nd St, Lombard, IL 60148</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">View on Google Maps →</span></div></a>
+          <a class="lcard sr d2" href="https://www.google.com/maps/search/?api=1&query=30+Riverwoods+Rd+Lincolnshire+IL+60069" target="_blank" rel="noopener" onclick="focusMap('lincolnshire')" style="text-decoration:none;color:inherit;cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p><span style="font-size:.75rem;color:var(--hf-teal);font-weight:500;margin-top:4px;display:inline-block">View on Google Maps →</span></div></a>
         </div>
-        <div class="map-f sr d1"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190255.8!2d-88.05!3d41.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL!5e0!3m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div class="map-f sr d1" id="map-container">
+          <iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d380000!2d-87.95!3d41.97!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL!5e0!3m2!1sen!2sus" style="width:100%;height:100%;min-height:340px;border:none;border-radius:14px" allowfullscreen loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -997,6 +1008,98 @@ footer ul a:hover{color:var(--hf-teal-light)}
   </section>
 </div>
 
+<!-- ============================
+     PAGE: ANNOUNCEMENTS
+     ============================ -->
+<div class="page" id="p-announcements">
+  <div class="pg-head" style="background:linear-gradient(135deg,rgba(0,131,143,.04),rgba(200,150,50,.04))">
+    <div class="container">
+      <div class="eyebrow" style="justify-content:center">Stay Updated</div>
+      <h1 class="heading">Announcements & Events</h1>
+      <p>What's happening in the Heartfulness Chicago community — upcoming events, news, and updates.</p>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENTS -->
+  <section class="ann-section">
+    <div class="container">
+      <div class="ann-grid">
+        <!-- Pinned announcement -->
+        <div class="ann-card pinned sr">
+          <div class="ann-pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--hf-gold)" stroke="none"><path d="M16 2L7.5 10.5 2 12l10 10 1.5-5.5L22 8z"/></svg> Pinned</div>
+          <div class="ann-date">Ongoing</div>
+          <h3>Sunday Group Meditation — Every Week</h3>
+          <p>Join us every Sunday at 9:00 AM at the Chicago Center for guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
+          <div class="ann-tags"><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
+        </div>
+
+        <div class="ann-card sr d1">
+          <div class="ann-date">Every Mon–Sat</div>
+          <h3>Daily Morning Meditation on Zoom</h3>
+          <p>Start each day with clarity. Join our guided Zoom meditation at 6:30 AM. No experience needed — just join the call and we'll guide you through everything.</p>
+          <div class="ann-meta">Meeting ID: 748 825 5077 · Passcode: 123456</div>
+          <div class="ann-tags"><span class="ann-tag cyan">Online</span><span class="ann-tag cyan">Daily</span></div>
+        </div>
+
+        <div class="ann-card sr d2">
+          <div class="ann-date">First Saturday of Each Month</div>
+          <h3>Newcomer Introduction Workshop</h3>
+          <p>Curious about Heartfulness? This monthly workshop is designed for first-timers. Learn the practice, experience yogic transmission, and ask questions in a relaxed setting.</p>
+          <div class="ann-tags"><span class="ann-tag gold">Special Event</span><span class="ann-tag teal">In-Person</span></div>
+        </div>
+
+        <div class="ann-card sr">
+          <div class="ann-date">Every Wednesday · 7:00 PM</div>
+          <h3>Lombard Center Evening Session</h3>
+          <p>Mid-week meditation at our Lombard center. A great way to reset and recharge. One-on-one guidance available with our certified trainers.</p>
+          <div class="ann-tags"><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
+        </div>
+
+        <div class="ann-card sr d1">
+          <div class="ann-date">Coming Soon</div>
+          <h3>Heartfulness Youth Connect</h3>
+          <p>A new program for high schoolers and college students in the Chicago area — exploring emotional wellness, focus, and inner growth through meditation.</p>
+          <div class="ann-tags"><span class="ann-tag gold">Upcoming</span><span class="ann-tag cyan">Youth</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="cal-section" style="padding:80px 0 100px">
+    <div class="container">
+      <div class="sr" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">Monthly Calendar</div>
+        <h2 class="heading">Browse Our Schedule</h2>
+        <p class="subtext" style="margin:0 auto">Click any highlighted day to see sessions and events.</p>
+      </div>
+      <div class="cal-wrap sr d1">
+        <div class="cal-header">
+          <button class="cal-nav" id="cal-prev" onclick="calNav(-1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <h3 id="cal-title"></h3>
+          <button class="cal-nav" id="cal-next" onclick="calNav(1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="cal-days">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <span><span class="legend-dot" style="background:var(--hf-teal)"></span>In-Person</span>
+          <span><span class="legend-dot" style="background:var(--hf-cyan)"></span>Online</span>
+          <span><span class="legend-dot" style="background:var(--hf-gold)"></span>Special Event</span>
+        </div>
+      </div>
+      <div class="cal-detail" id="cal-detail" style="display:none">
+        <div class="cal-detail-head">
+          <h4 id="cal-detail-date"></h4>
+          <button onclick="document.getElementById('cal-detail').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--g400);font-size:1.2rem">&times;</button>
+        </div>
+        <div id="cal-detail-events"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- JOIN SESSION MODAL -->
 <div class="modal-overlay" id="join-modal" onclick="if(event.target===this)closeJoinModal()">
   <div class="modal-card">
@@ -1054,9 +1157,9 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <div class="container">
     <div class="ft-grid">
       <div><div class="ft-brand">heartfulness <span class="c">chicago</span></div><p class="ft-desc">A global not-for-profit dedicated to uplifting communities through heart-based meditation. All services free, always.</p><p class="ft-desc" style="font-style:italic;opacity:.6;font-size:.8rem">purity weaves destiny</p></div>
-      <div><h5>Explore</h5><ul><li><a href="#" onclick="go('home');return false">Home</a></li><li><a href="#" onclick="go('about');return false">About</a></li><li><a href="#" onclick="go('meditation');return false">Meditation</a></li><li><a href="#" onclick="go('sessions');return false">Sessions</a></li><li><a href="#" onclick="go('community');return false">Community</a></li></ul></div>
+      <div><h5>Explore</h5><ul><li><a href="#" onclick="go('home');return false">Home</a></li><li><a href="#" onclick="go('about');return false">About</a></li><li><a href="#" onclick="go('meditation');return false">Meditation</a></li><li><a href="#" onclick="go('sessions');return false">Sessions</a></li><li><a href="#" onclick="go('community');return false">Community</a></li><li><a href="#" onclick="go('announcements');return false">Announcements</a></li></ul></div>
       <div><h5>Resources</h5><ul><li><a href="https://heartfulness.org/us/" target="_blank" rel="noopener">Heartfulness US</a></li><li><a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a></li><li><a href="https://www.heartfulnessapp.org/" target="_blank" rel="noopener">Download App</a></li><li><a href="https://heartfulness.org/us/videos/" target="_blank" rel="noopener">Videos</a></li></ul></div>
-      <div><h5>Connect</h5><ul><li><a href="https://www.facebook.com/heartfulnesschicago/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://twitter.com/heartfulness_il" target="_blank" rel="noopener">Twitter</a></li><li><a href="https://www.youtube.com/heartfulness" target="_blank" rel="noopener">YouTube</a></li><li><a href="mailto:info@chicagoheartfulness.org">Email Us</a></li></ul></div>
+      <div><h5>Connect</h5><ul><li><a href="https://www.facebook.com/heartfulnesschicago/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://twitter.com/heartfulness_il" target="_blank" rel="noopener">Twitter</a></li><li><a href="https://www.youtube.com/heartfulness" target="_blank" rel="noopener">YouTube</a></li><li><a href="mailto:info@chicagoheartfulness.org">Email Us</a></li><li><a href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener">Donate</a></li></ul></div>
     </div>
     <div class="ft-bot"><span>&copy; 2026 Heartfulness Chicago. All services free of charge.</span><span>A chapter of the <a href="https://www.heartfulnessinstitute.org/" target="_blank" rel="noopener">Heartfulness Institute</a> · Sahaj Marg Meditation</span></div>
   </div>
@@ -1066,7 +1169,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
      SCRIPTS
      ============================ -->
 <script>
-const pages=['home','about','meditation','sessions','community'];
+const pages=['home','about','meditation','sessions','community','announcements'];
 let cur='home';
 
 function go(p){
@@ -1245,6 +1348,17 @@ function jmSubmit(e){
   document.getElementById('jm-step3').style.display='block';
   // Reset form
   document.getElementById('jm-form').reset();
+}
+
+/* ===== MAP: Focus on location when card is clicked ===== */
+const mapUrls={
+  chicago:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968!2d-87.7185!3d41.9218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fcd6d6b6b6b6b%3A0x0!2s3537+W+Belden+Ave%2C+Chicago%2C+IL+60647!5e0!3m2!1sen!2sus',
+  lombard:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968!2d-88.009!3d41.871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e4f0e0e0e0e0e%3A0x0!2s350+W+22nd+St%2C+Lombard%2C+IL+60148!5e0!3m2!1sen!2sus',
+  lincolnshire:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968!2d-87.910!3d42.168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fae0e0e0e0e0e%3A0x0!2s30+Riverwoods+Rd%2C+Lincolnshire%2C+IL+60069!5e0!3m2!1sen!2sus'
+};
+function focusMap(loc){
+  const f=document.getElementById('gmap');
+  if(f&&mapUrls[loc]){f.src=mapUrls[loc];event.preventDefault()}
 }
 </script>
 </body>
