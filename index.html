@@ -309,7 +309,8 @@ nav.scrolled{background:rgba(250,250,248,.93);backdrop-filter:blur(20px);-webkit
    ============================================ */
 .sess-hero{padding:calc(var(--nav-h) + 56px) 0 56px;text-align:center;background:linear-gradient(180deg,var(--g50),var(--off-white))}
 .sched{padding:72px 0 100px}
-.sched-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.sched-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:44px}
+.sched-grid .scard{width:calc(33.333% - 15px)}
 .scard{background:var(--white);border-radius:18px;padding:32px 24px;border:1px solid var(--g100);transition:all .3s var(--ease);position:relative;overflow:hidden}
 .scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--hf-teal)}
 .scard:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(0,0,0,.06);border-color:transparent}
@@ -390,7 +391,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
   .comm-gallery{grid-template-columns:repeat(2,1fr)}.comm-gallery .photo-frame:first-child{grid-row:auto}
   .story-grid,.prac-row,.con-grid,.news-card{grid-template-columns:1fr;gap:36px}
   .prac-row.rev .prac-vis{order:0}
-  .sched-grid{grid-template-columns:repeat(2,1fr)}
+  .sched-grid .scard{width:calc(50% - 11px)}
   .vals-grid{grid-template-columns:repeat(2,1fr)}
   .ft-grid{grid-template-columns:1fr 1fr}
   .cta-card{flex-direction:column;text-align:center;padding:56px 36px}
@@ -401,7 +402,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
 @media(max-width:768px){
   .nav-menu{display:none}.mob-btn{display:flex}
   .feat-grid{grid-template-columns:1fr 1fr;gap:14px}
-  .sched-grid,.vals-grid{grid-template-columns:1fr}
+  .sched-grid .scard{width:100%}
+  .vals-grid{grid-template-columns:1fr}
   .loc-grid{grid-template-columns:1fr}
   .comm-gallery,.action-gallery{grid-template-columns:1fr}
   .zoom-bar{flex-direction:column;text-align:center}
@@ -532,7 +534,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <span class="nv" onclick="go('sessions')">Sessions</span>
       <span class="nv" onclick="go('announcements')">Announcements</span>
       <a class="nv-donate" href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener">Donate</a>
-      <span class="nv-cta" onclick="openJoinModal()">Join Free Session</span>
     </div>
     <button class="mob-btn" id="mb" onclick="togMob()"><span></span><span></span><span></span></button>
   </div>
@@ -544,7 +545,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <span class="nv" onclick="go('sessions');closeMob()">Sessions</span>
   <span class="nv" onclick="go('announcements');closeMob()">Announcements</span>
   <a class="nv-donate" href="https://www.heartfulnessinstitute.org/donations/" target="_blank" rel="noopener" style="text-align:center;padding:14px;font-size:1rem;border-radius:12px;margin-top:8px">Donate</a>
-  <span class="nv-cta" onclick="openJoinModal();closeMob()">Join Free Session</span>
 </div>
 
 <!-- ============================
@@ -560,16 +560,12 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <h1>Find Joy, Peace &amp; <span class="hl">Inner Balance</span></h1>
         <p class="hero-desc">We're a community of meditators across Chicagoland — gathering every Sunday, hosting free workshops at local libraries, and welcoming anyone who wants to experience the heart. No cost, no catch.</p>
         <div class="hero-btns">
-          <a class="btn btn-p" onclick="openJoinModal()">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Join This Sunday
-          </a>
           <a class="btn btn-o" onclick="go('meditation')">Explore the Practice</a>
         </div>
       </div>
       <div class="hero-vis">
         <div class="hero-img">
-          <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Person meditating peacefully">
+          <img src="https://images.pexels.com/photos/7596956/pexels-photo-7596956.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Group of people meditating together peacefully">
         </div>
       </div>
     </div>
@@ -627,15 +623,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-s">
-    <div class="container">
-      <div class="cta-card sr">
-        <div><h2>Your First Session Is This Sunday</h2><p>9:00 AM at our Chicago Center. No signup needed — just show up with an open heart. We'll guide you through everything.</p></div>
-        <div><button class="btn btn-w" onclick="openJoinModal()" type="button">Get Started</button></div>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- ============================
@@ -653,8 +640,8 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <section class="about-story">
     <div class="container">
       <div class="story-grid">
-        <div class="story-img sr">
-          <img src="https://images.pexels.com/photos/8436587/pexels-photo-8436587.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Group meditation session in a peaceful space">
+        <div class="story-img sr" style="aspect-ratio:auto;box-shadow:none;display:flex;align-items:center;justify-content:center;background:var(--off-white)">
+          <img src="images/heartfulness.png" alt="Heartfulness — purity weaves destiny" style="object-fit:contain;width:80%;height:auto;max-height:100%">
         </div>
         <div class="story-text sr d1">
           <h3>What is Heartfulness?</h3>
@@ -706,7 +693,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM<br>5 Locations across Chicagoland</p>
         </div>
       </div>
-      <div class="about-social sr" style="text-align:center;margin-top:40px;">
+      <div class="about-social sr" style="text-align:center;margin-top:60px;padding:40px 0 80px;">
         <p style="font-weight:500;color:var(--g600);margin-bottom:16px;">Follow us on social media</p>
         <div class="soc-row" style="justify-content:center;gap:16px;">
           <a href="https://www.facebook.com/heartfulnesschicago/" class="soc-a lg" target="_blank" rel="noopener" title="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="#6E685E"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
@@ -718,14 +705,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
     </div>
   </section>
 
-  <section class="cta-s">
-    <div class="container">
-      <div class="cta-card sr">
-        <div><h2>Come Experience It Yourself</h2><p>The best way to understand Heartfulness is to feel it. Join a session and see what draws people in.</p></div>
-        <div><button class="btn btn-w" onclick="openJoinModal()" type="button">Find a Session</button></div>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- ============================
@@ -753,7 +732,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Prepares body and mind for meditation</div>
           </div>
         </div>
-        <div class="prac-vis"><img src="https://images.pexels.com/photos/3822864/pexels-photo-3822864.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Person in relaxation pose"></div>
+        <div class="prac-vis"><img src="https://images.pexels.com/photos/28640147/pexels-photo-28640147.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Serene morning lake landscape at sunrise — relaxation"></div>
       </div>
 
       <div class="prac-row rev sr">
@@ -767,7 +746,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Deep states from the very first session</div>
           </div>
         </div>
-        <div class="prac-vis"><img src="https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Meditation with heart-centered focus"></div>
+        <div class="prac-vis"><img src="https://images.pexels.com/photos/6958257/pexels-photo-6958257.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Hands in meditation mudra — heart-centered focus"></div>
       </div>
 
       <div class="prac-row sr">
@@ -781,7 +760,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Better sleep and rejuvenation</div>
           </div>
         </div>
-        <div class="prac-vis"><img src="https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Evening relaxation and rejuvenation"></div>
+        <div class="prac-vis"><img src="https://images.pexels.com/photos/3013942/pexels-photo-3013942.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Golden sunlight over calm water at dusk — renewal and release"></div>
       </div>
 
       <div class="prac-row rev sr">
@@ -795,7 +774,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>A peaceful way to close each day</div>
           </div>
         </div>
-        <div class="prac-vis"><img src="https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Inner connect through peaceful contemplation"></div>
+        <div class="prac-vis"><img src="https://images.pexels.com/photos/5418308/pexels-photo-5418308.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Woman with hands in prayer — inner connect contemplation"></div>
       </div>
     </div>
   </section>
@@ -843,7 +822,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
 
   <section class="sched">
     <div class="container">
-      <div class="sched-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="sched-grid">
         <div class="scard sr">
           <span class="badge">In-Person · Sundays</span>
           <h3>Chicago Center</h3>
@@ -875,7 +854,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <div class="scard sr d4">
           <span class="badge">In-Person</span>
           <h3>Batavia Public Library</h3>
-          <div class="stime">Check Schedule</div>
+          <div class="stime">1:00 PM</div>
           <p>Heartfulness meditation sessions at the Batavia Public Library. Open to all — no signup needed.</p>
           <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>10 S. Batavia Ave, Batavia, IL 60510</span></div>
         </div>
@@ -1359,7 +1338,7 @@ const locations={
   lombard:{lat:41.871,lng:-88.009,name:'Lombard Center',addr:'Suite #104, 350 W 22nd St, Lombard, IL 60148',time:'Sundays 9 AM'},
   lincolnshire:{lat:42.168,lng:-87.910,name:'Lincolnshire Center',addr:'30 Riverwoods Rd, Lincolnshire, IL 60069',time:'Sundays 9 AM'},
   evanston:{lat:42.0497,lng:-87.6867,name:'Evanston Center',addr:'1030 Greenleaf Street, Evanston, IL 60202',time:'Sundays 9 AM'},
-  batavia:{lat:41.8503,lng:-88.3126,name:'Batavia Public Library',addr:'10 S. Batavia Ave, Batavia, IL 60510',time:'Check Schedule'}
+  batavia:{lat:41.8503,lng:-88.3126,name:'Batavia Public Library',addr:'10 S. Batavia Ave, Batavia, IL 60510',time:'Sundays 1 PM'}
 };
 let hfMarkers={};
 
