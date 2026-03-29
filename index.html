@@ -409,8 +409,9 @@ footer ul a:hover{color:var(--hf-teal-light)}
   .zoom-bar{flex-direction:column;text-align:center}
   .scroll-h{display:none}
   /* Lakefront cloud section mobile fix */
-  .lakefront-feat{aspect-ratio:auto!important;min-height:auto!important}
-  .lakefront-feat .lf-overlay{padding:28px!important}
+  .lakefront-feat{aspect-ratio:auto!important;min-height:320px!important}
+  .lakefront-feat>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+  .lakefront-feat .lf-overlay{position:relative!important;padding:32px 24px!important;background:rgba(0,50,55,.75)!important}
   .lakefront-feat .lf-overlay div{max-width:100%!important}
   /* Footer compact on mobile */
   .ft-grid{grid-template-columns:1fr;gap:24px;margin-bottom:28px;text-align:center}
