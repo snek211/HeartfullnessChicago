@@ -40,7 +40,7 @@
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
-  --nav-h: 72px;
+  --nav-h: 88px;
   --nav-total-h: calc(var(--nav-h) + env(safe-area-inset-top,0px));
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --max-w: 1200px;
@@ -412,198 +412,164 @@ footer ul a:hover{color:var(--hf-teal-light)}
   .vid-cards{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  /* BASE — larger text across the board */
-  body{font-size:17px;line-height:1.8}
   .nav-menu{display:none}.mob-btn{display:flex}
-  .container{padding:0 24px}
+  .container{padding:0 20px}
   .nav-in{padding:0 20px}
-  .logo img{height:42px!important}
-
-  /* MOBILE NAV — full-screen, large touch targets */
-  .mob-btn{min-width:48px;min-height:48px;justify-content:center;align-items:center}
-  .mob-menu{padding:28px 24px 40px}
-  .mob-menu .nv{min-height:56px;display:flex;align-items:center;font-size:1.25rem;font-weight:500;border-bottom:1px solid var(--g100);padding:16px 0}
-  .mob-menu .nv-donate{font-size:1.1rem;padding:16px;margin-top:12px;border-radius:50px}
-
-  /* HERO — big, bold, welcoming */
-  .hero{min-height:auto;padding-top:var(--nav-total-h);padding-bottom:32px}
-  .hero-inner{padding:48px 24px 28px}
+  .logo img{height:52px!important}
+  .mob-btn{min-width:44px;min-height:44px;justify-content:center;align-items:center}
+  .mob-menu{padding:28px 20px 40px}
+  .mob-menu .nv{min-height:48px;display:flex;align-items:center;font-size:1.15rem;padding:14px 0;border-bottom:1px solid var(--g100)}
+  .mob-menu .nv-donate{font-size:1rem;padding:14px;margin-top:12px;border-radius:50px}
+  /* Hero */
+  .hero{min-height:auto;padding-top:var(--nav-total-h);padding-bottom:40px}
+  .hero-inner{padding:40px 20px 28px}
   .hero-orb{opacity:.15;filter:blur(60px)}
-  .hero h1{font-size:2.4rem;margin-bottom:20px;letter-spacing:-.03em;line-height:1.12}
-  .hero-desc{font-size:1.1rem;line-height:1.75;margin-bottom:32px;color:var(--g500)}
-  .hero-badge{margin-bottom:22px;padding:8px 16px;font-size:.82rem}
-  .hero-vis{max-width:280px}
+  .hero h1{font-size:clamp(1.9rem,7vw,2.4rem);margin-bottom:16px}
+  .hero-desc{font-size:.95rem;line-height:1.8;margin-bottom:28px}
+  .hero-badge{margin-bottom:18px;padding:5px 12px}
+  .hero-vis{max-width:300px}
   .hero-img{border-radius:16px}
   .scroll-h{display:none}
-
-  /* FEATURES — large readable cards */
-  .features{padding:72px 0}
+  /* Features */
+  .features{padding:64px 0}
   .feat-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .feat{padding:26px 22px;border-radius:14px}
-  .feat-ic{width:46px;height:46px;margin-bottom:14px;border-radius:12px}
-  .feat h4{font-size:1rem;margin-bottom:5px}
-  .feat p{font-size:.9rem;line-height:1.65}
-
-  /* COMMUNITY — gallery */
-  .community{padding:72px 0}
+  .feat{padding:22px 18px;border-radius:14px}
+  .feat-ic{width:42px;height:42px;margin-bottom:12px;border-radius:11px}
+  .feat h4{font-size:.88rem;margin-bottom:4px}
+  .feat p{font-size:.8rem;line-height:1.6}
+  /* Community */
+  .community{padding:64px 0}
   .comm-gallery{grid-template-columns:1fr 1fr}
   .action-gallery{grid-template-columns:1fr 1fr}
   .action-item.wide{grid-column:span 2}
   .photo-frame{border-radius:12px}
-
-  /* QUOTE — prominent on mobile */
-  .quote-s{padding:80px 0}
-  .quote-s::before{font-size:5rem;top:16px}
-  .quote-body blockquote{font-size:1.3rem;line-height:1.65;padding:0 8px}
-  .quote-who{font-size:.82rem;letter-spacing:.1em}
-
-  /* LAKEFRONT SECTION — text flows naturally */
+  /* Quote */
+  .quote-s{padding:72px 0}
+  .quote-s::before{font-size:5rem;top:10px}
+  .quote-body blockquote{font-size:1.1rem;line-height:1.7;padding:0 8px}
+  .quote-who{font-size:.75rem}
+  /* Lakefront */
   .lakefront-feat{aspect-ratio:auto!important;min-height:auto!important;border-radius:14px!important}
   .lakefront-feat>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
-  .lakefront-feat .lf-overlay{position:relative!important;padding:40px 28px!important;background:rgba(0,50,55,.88)!important}
+  .lakefront-feat .lf-overlay{position:relative!important;padding:32px 24px!important;background:rgba(0,50,55,.85)!important}
   .lakefront-feat .lf-overlay-inner{max-width:100%!important}
   .lakefront-section{padding:0 0 56px}
-  .lf-kicker{font-size:.82rem!important}
-  .lf-title{font-size:1.6rem!important;line-height:1.3!important}
-  .lf-text{font-size:1rem!important;line-height:1.75!important}
-
-  /* VIDEO SECTIONS */
-  .vid-section{padding:72px 0}
+  .lf-kicker{font-size:.78rem!important}
+  .lf-title{font-size:1.35rem!important;line-height:1.4!important}
+  .lf-text{font-size:.88rem!important;line-height:1.7!important}
+  /* Video */
+  .vid-section{padding:64px 0}
   .vid-wrap{margin-top:24px;border-radius:12px}
-  .vids-grid{padding:72px 0}
-  .vid-cards{gap:16px;margin-top:24px}
-
-  /* PAGE HEADERS — bigger type */
-  .pg-head{padding:calc(var(--nav-total-h) + 52px) 0 52px}
-  .pg-head h1{font-size:2rem}
-  .pg-head p{font-size:1.05rem;line-height:1.7}
-
-  /* ABOUT PAGE — readable */
-  .about-story{padding:72px 0}
-  .story-grid{gap:32px}
-  .story-text h3{font-size:1.6rem;margin-bottom:16px}
-  .story-text p{font-size:1.05rem;line-height:1.8}
-  .vals{padding:72px 0}
-  .vals-grid{grid-template-columns:1fr!important;gap:14px}
-  .vcard{padding:30px 26px;border-radius:14px}
-  .vcard h4{font-size:1.1rem;margin-bottom:8px}
-  .vcard p{font-size:1rem;line-height:1.75}
-  .vcard-ic{width:48px;height:48px;margin-bottom:16px}
-  .about-contact-grid{grid-template-columns:1fr!important;gap:14px}
-  .about-ccard{padding:30px 26px;border-radius:14px}
-  .about-ccard h4{font-size:1.1rem}
-  .about-ccard a,.about-ccard p{font-size:1rem!important}
-  .about-social{padding:36px 0 72px!important;margin-top:40px!important}
-  .about-social p{font-size:1rem!important}
-
-  /* MEDITATION PAGE — spacious */
-  .med-hero{padding:calc(var(--nav-total-h) + 44px) 0 48px}
-  .med-hero p{font-size:1.05rem!important}
-  .prac-section{padding:64px 0}
-  .prac-row{margin-bottom:48px;gap:28px!important}
-  .prac-num{font-size:3.2rem;color:var(--g200)}
-  .prac-info h3{font-size:1.5rem}
-  .prac-info p{font-size:1.05rem;line-height:1.8}
+  .vids-grid{padding:64px 0}
+  .vid-cards{gap:14px;margin-top:24px}
+  /* Page headers */
+  .pg-head{padding:calc(var(--nav-total-h) + 44px) 0 44px}
+  .pg-head h1{font-size:clamp(1.5rem,6vw,2rem)}
+  .pg-head p{font-size:.95rem}
+  /* About */
+  .about-story{padding:64px 0}
+  .story-grid{gap:28px}
+  .story-text h3{font-size:1.35rem;margin-bottom:14px}
+  .story-text p{font-size:.92rem;line-height:1.8}
+  .vals{padding:64px 0}
+  .vals-grid{grid-template-columns:1fr!important;gap:12px}
+  .vcard{padding:26px 22px;border-radius:14px}
+  .vcard h4{font-size:1rem}
+  .vcard p{font-size:.88rem;line-height:1.7}
+  .about-contact-grid{grid-template-columns:1fr!important;gap:12px}
+  .about-ccard{padding:26px 22px;border-radius:14px}
+  .about-ccard h4{font-size:1rem}
+  .about-social{padding:32px 0 64px!important;margin-top:36px!important}
+  /* Meditation */
+  .med-hero{padding:calc(var(--nav-total-h) + 36px) 0 44px}
+  .prac-section{padding:56px 0}
+  .prac-row{margin-bottom:48px;gap:24px!important}
+  .prac-num{font-size:2.8rem;color:var(--g200)}
+  .prac-info h3{font-size:1.25rem}
+  .prac-info p{font-size:.9rem;line-height:1.75}
   .prac-vis{border-radius:14px}
-  .prac-check{font-size:1rem}
-  .research{padding:64px 0}
-  .research-logos span{font-size:1.1rem}
-
-  /* SESSIONS — large readable cards */
-  .sched{padding:60px 0 80px}
+  .prac-check{font-size:.86rem}
+  .research{padding:56px 0}
+  /* Sessions */
+  .sched{padding:56px 0 72px}
   .sched-grid .scard{width:100%}
-  .scard{padding:30px 26px;border-radius:14px}
-  .scard .stime{font-size:1.6rem}
-  .scard h3{font-size:1.15rem}
-  .scard p{font-size:.98rem;line-height:1.7}
-  .scard .badge{font-size:.78rem;padding:6px 14px}
-  .scard .sloc{font-size:.92rem}
+  .scard{padding:26px 22px;border-radius:14px}
+  .scard .stime{font-size:1.4rem}
+  .scard h3{font-size:1rem}
+  .scard p{font-size:.86rem;line-height:1.65}
+  .scard .badge{font-size:.72rem;padding:5px 12px}
+  .scard .sloc{font-size:.84rem}
   .loc-grid{grid-template-columns:1fr}
-  .map-f{min-height:300px;border-radius:14px}
-  .lcard{border-radius:12px;padding:18px 20px}
-  .lcard h4{font-size:1rem}
-  .lcard p{font-size:.92rem}
-
-  /* CONTACT */
-  .contact{padding:72px 0}
-  .con-info h3{font-size:1.4rem}
-  .con-info>p{font-size:1rem}
-  .cd .cd-v{font-size:.95rem}
-
-  /* GENERAL — bigger everywhere */
-  .zoom-bar{flex-direction:column;text-align:center;padding:24px;border-radius:12px}
-  .zoom-bar h4{font-size:1.05rem}
-  .zoom-bar p{font-size:.95rem}
-  .eyebrow{font-size:.78rem;margin-bottom:14px}
-  .heading{margin-bottom:16px;font-size:clamp(1.8rem,7vw,2.3rem)}
-  .subtext{font-size:1.05rem;line-height:1.75}
+  .map-f{min-height:280px;border-radius:14px}
+  .lcard{border-radius:12px;padding:16px 18px}
+  .lcard h4{font-size:.92rem}
+  .lcard p{font-size:.84rem}
+  /* Contact */
+  .contact{padding:64px 0}
+  .con-info h3{font-size:1.3rem}
+  .con-info>p{font-size:.92rem}
+  /* General */
+  .zoom-bar{flex-direction:column;text-align:center;padding:20px;border-radius:12px}
+  .eyebrow{font-size:.72rem;margin-bottom:10px}
+  .heading{margin-bottom:12px;font-size:clamp(1.6rem,6vw,2.1rem)}
+  .subtext{font-size:.95rem}
   .lakefront-section{padding:0 0 56px}
   section[style*="padding:0 0 100px"]{padding:0 0 56px!important}
-
-  /* NEWS */
-  .news-s{padding:72px 0}
-  .news-card{padding:26px;border-radius:14px;gap:24px}
-  .news-text h3{font-size:1.2rem}
-  .news-text p{font-size:.98rem}
-
+  /* News */
+  .news-s{padding:64px 0}
+  .news-card{padding:24px;border-radius:14px;gap:20px}
+  .news-text h3{font-size:1.1rem}
+  .news-text p{font-size:.88rem}
   /* CTA */
-  .cta-s{padding:72px 0 64px}
-  .cta-card{padding:44px 28px!important;border-radius:16px!important;flex-direction:column;text-align:center}
-  .cta-card h2{font-size:1.6rem!important}
-  .cta-card p{font-size:1rem!important}
-
-  /* ANNOUNCEMENTS */
+  .cta-s{padding:64px 0 56px}
+  .cta-card{padding:36px 24px!important;border-radius:14px!important;flex-direction:column;text-align:center}
+  .cta-card h2{font-size:1.5rem!important}
+  .cta-card p{font-size:.92rem!important}
+  /* Announcements */
   .ann-section{padding:48px 0}
-  .ann-card{padding:26px;border-radius:14px}
-  .ann-card h3{font-size:1.15rem}
-  .ann-card p{font-size:.98rem}
-
-  /* FOOTER — compact but readable */
-  footer{padding:44px 0 24px}
-  .ft-grid{grid-template-columns:1fr;gap:24px;margin-bottom:28px;text-align:center}
-  .ft-brand{font-size:1.1rem}
-  .ft-desc{margin:0 auto 14px;font-size:.92rem;max-width:300px}
-  footer h5{margin-bottom:10px;font-size:.75rem}
-  footer ul{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px}
+  .ann-card{padding:24px;border-radius:14px}
+  .ann-card h3{font-size:1.05rem}
+  .ann-card p{font-size:.88rem}
+  /* Calendar dots fix for mobile/Wix */
+  .cal-cell .cal-dots{bottom:2px;margin-top:1px}
+  .cal-dot{width:4px;height:4px}
+  .cal-cell{font-size:.82rem}
+  /* Footer */
+  footer{padding:36px 0 18px}
+  .ft-grid{grid-template-columns:1fr;gap:20px;margin-bottom:24px;text-align:center}
+  .ft-brand{font-size:1rem}
+  .ft-desc{margin:0 auto 12px;font-size:.84rem;max-width:280px}
+  footer h5{margin-bottom:8px;font-size:.7rem}
+  footer ul{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px}
   footer ul li{margin-bottom:0}
-  footer ul a{font-size:.9rem}
-  .ft-bot{justify-content:center;text-align:center;font-size:.75rem}
+  footer ul a{font-size:.82rem}
+  .ft-bot{justify-content:center;text-align:center;font-size:.7rem}
   .soc-row{justify-content:center}
-
-  /* BUTTONS — large touch targets */
-  .btn{padding:16px 32px;font-size:1.05rem;min-height:52px}
-
-  /* APP */
-  .app-card{padding:32px 24px;border-radius:14px}
-  .app-card h4{font-size:1.15rem}
-  .app-card>p{font-size:.95rem}
-  .app-b{padding:12px 18px;border-radius:12px}
-  .app-b strong{font-size:.95rem}
-
-  /* MODAL */
-  .modal-card{padding:28px;border-radius:16px}
-  .modal-step h3{font-size:1.3rem}
-  .jm-opt{padding:18px;border-radius:12px}
-  .jm-opt strong{font-size:1rem}
-  .jm-opt p{font-size:.9rem}
-  .cal-wrap{padding:24px;border-radius:14px}
+  /* Buttons */
+  .btn{padding:14px 24px;font-size:.92rem;min-height:44px}
+  /* App */
+  .app-card{padding:28px 20px;border-radius:14px}
+  .app-card h4{font-size:1.05rem}
+  .app-card>p{font-size:.88rem}
+  /* Modal */
+  .modal-card{padding:24px;border-radius:14px}
+  .cal-wrap{padding:20px;border-radius:14px}
 }
 @media(max-width:480px){
-  .container{padding:0 20px}
+  .container{padding:0 16px}
   .feat-grid{grid-template-columns:1fr;gap:10px}
   .hero-btns{flex-direction:column;align-items:stretch}
   .hero-btns .btn{justify-content:center}
-  .hero-inner{padding:36px 20px 24px}
-  .hero h1{font-size:2.1rem}
-  .hero-vis{max-width:240px}
-  .heading{font-size:clamp(1.6rem,7vw,2rem)}
+  .hero-inner{padding:30px 16px 24px}
+  .hero h1{font-size:1.8rem}
+  .hero-vis{max-width:260px}
+  .heading{font-size:clamp(1.5rem,6vw,1.9rem)}
   .comm-gallery,.action-gallery{grid-template-columns:1fr}
   .action-item.wide{grid-column:span 1}
   .app-btns{flex-direction:column}
-  .scard .badge{font-size:.72rem}
+  .scard .badge{font-size:.65rem}
   .news-card{grid-template-columns:1fr}
   .news-img{width:100%}
-  .quote-body blockquote{font-size:1.15rem}
 }
 
 /* ============================================
@@ -734,14 +700,14 @@ footer ul a:hover{color:var(--hf-teal-light)}
 
 <!-- LOADER -->
 <div class="loader" id="ldr">
-  <img src="images/logo-hd.png" alt="Heartfulness" style="height:52px;width:auto;animation:pulse 1.2s ease-in-out infinite;">
+  <img src="images/logo-xl.png" alt="Heartfulness" style="height:64px;width:auto;animation:pulse 1.2s ease-in-out infinite;">
 </div>
 
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-in">
     <a class="logo" onclick="go('home')">
-      <img src="images/logo-hd.png" alt="Heartfulness Sahaj Marg Meditation" style="height:62px;width:auto;">
+      <img src="images/logo-xl.png" alt="Heartfulness Sahaj Marg Meditation" style="height:80px;width:auto;">
     </a>
     <div class="nav-menu" id="nm">
       <span class="nv on" onclick="go('home')">Home</span>
@@ -898,15 +864,15 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <h4>Email Us</h4>
           <a href="mailto:info@chicagoheartfulness.org" style="color:var(--hf-teal);font-weight:500">info@chicagoheartfulness.org</a>
         </div>
-        <div class="about-ccard sr d1">
+        <div class="about-ccard sr d1" onclick="go('sessions');setTimeout(()=>document.querySelector('.locs')?.scrollIntoView({behavior:'smooth',block:'start'}),500)" style="cursor:pointer">
           <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <h4>Visit Us</h4>
           <p style="color:var(--g500);font-size:.92rem">Suite #104, 350 W 22nd St<br>Lombard, IL 60148</p>
         </div>
-        <div class="about-ccard sr d2">
+        <div class="about-ccard sr d2" onclick="go('sessions')" style="cursor:pointer">
           <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <h4>Session Times</h4>
-          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM<br>5 Locations across Chicagoland</p>
+          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM<br>6 Locations across Chicagoland</p>
         </div>
       </div>
       <div class="about-social sr" style="text-align:center;margin-top:60px;padding:40px 0 80px;">
@@ -1074,6 +1040,13 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <p>Heartfulness meditation sessions at the Batavia Public Library. Open to all — no signup needed.</p>
           <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>10 S. Batavia Ave, Batavia, IL 60510</span></div>
         </div>
+        <div class="scard sr">
+          <span class="badge">In-Person · Sundays</span>
+          <h3>Hindu Mandir of Lake County</h3>
+          <div class="stime">10:30 AM</div>
+          <p>Heartfulness meditation at the Hindu Mandir of Lake County in Grayslake. Everyone 15+ welcome, all levels. Free sessions every Sunday through June 28.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>20444 W Peterson Rd, Grayslake, IL 60030</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1088,6 +1061,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="lcard sr d2" onclick="focusMap('lincolnshire')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Lincolnshire Center</h4><p>30 Riverwoods Rd, Lincolnshire, IL 60069</p></div></div>
           <div class="lcard sr d3" onclick="focusMap('evanston')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Evanston Center</h4><p>1030 Greenleaf Street, Evanston, IL 60202</p></div></div>
           <div class="lcard sr d4" onclick="focusMap('batavia')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Batavia Public Library</h4><p>10 S. Batavia Ave, Batavia, IL 60510</p></div></div>
+          <div class="lcard sr" onclick="focusMap('grayslake')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Hindu Mandir of Lake County</h4><p>20444 W Peterson Rd, Grayslake, IL 60030</p></div></div>
         </div>
         <div class="map-f sr d1" id="map-container">
           <div id="leaflet-map" style="width:100%;height:100%;min-height:420px;border-radius:14px;z-index:1"></div>
@@ -1227,7 +1201,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="ann-pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--hf-gold)" stroke="none"><path d="M16 2L7.5 10.5 2 12l10 10 1.5-5.5L22 8z"/></svg> Pinned</div>
           <div class="ann-date">Ongoing</div>
           <h3>Sunday Group Meditation — Every Week</h3>
-          <p>Join us every Sunday at 9:00 AM across 5 locations: Chicago, Lombard, Lincolnshire, Evanston, and Batavia. Guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
+          <p>Join us every Sunday across 6 locations: Chicago, Lombard, Lincolnshire, Evanston, Batavia, and Grayslake. Guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
           <div class="ann-tags"><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
         </div>
 
@@ -1246,17 +1220,11 @@ footer ul a:hover{color:var(--hf-teal-light)}
         </div>
 
         <div class="ann-card sr">
-          <div class="ann-date">Every Wednesday · 7:00 PM</div>
-          <h3>Lombard Center Evening Session</h3>
-          <p>Mid-week meditation at our Lombard center. A great way to reset and recharge. One-on-one guidance available with our certified trainers.</p>
-          <div class="ann-tags"><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
-        </div>
-
-        <div class="ann-card sr d1">
-          <div class="ann-date">Coming Soon</div>
-          <h3>Heartfulness Youth Connect</h3>
-          <p>A new program for high schoolers and college students in the Chicago area — exploring emotional wellness, focus, and inner growth through meditation.</p>
-          <div class="ann-tags"><span class="ann-tag gold">Upcoming</span><span class="ann-tag cyan">Youth</span></div>
+          <div class="ann-date">March 29 – June 28 · Every Sunday · 10:30 AM</div>
+          <h3>New: Heartfulness at Hindu Mandir of Lake County, Grayslake</h3>
+          <p>Free Heartfulness meditation sessions every Sunday at the Hindu Mandir of Lake County (2nd floor Library). Everyone 15+ welcome, all levels. Find your balance, strength, and inner peace.</p>
+          <div class="ann-meta">20444 W Peterson Rd, Grayslake, IL 60030 · Room: 2nd Floor Library</div>
+          <div class="ann-tags"><span class="ann-tag gold">New Location</span><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
         </div>
       </div>
     </div>
@@ -1330,6 +1298,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Lincolnshire Center — 30 Riverwoods Rd, Lincolnshire, IL 60069"><span>Lincolnshire Center</span></label>
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Evanston Center — 1030 Greenleaf Street, Evanston, IL 60202"><span>Evanston Center</span></label>
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Batavia Public Library — 10 S. Batavia Ave, Batavia, IL 60510"><span>Batavia Public Library</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Hindu Mandir of Lake County — 20444 W Peterson Rd, Grayslake, IL 60030"><span>Hindu Mandir of Lake County (Grayslake)</span></label>
         </div>
       </div>
       <form id="jm-form" onsubmit="jmSubmit(event)">
@@ -1417,6 +1386,10 @@ function getEventsForDate(y,m,d){
     evts.push({name:'Lombard Center Meditation',time:'9:00 AM',loc:'Lombard Center',type:'in-person'});
     evts.push({name:'Lincolnshire Center Meditation',time:'9:00 AM',loc:'Lincolnshire Center',type:'in-person'});
     evts.push({name:'Evanston Center Meditation',time:'9:00 AM',loc:'Evanston Center',type:'in-person'});
+    // Grayslake sessions (March 29 – June 28, 2026)
+    if(dt>=new Date(2026,2,29)&&dt<=new Date(2026,5,28)){
+      evts.push({name:'Hindu Mandir Grayslake Meditation',time:'10:30 AM',loc:'Hindu Mandir of Lake County',type:'in-person'});
+    }
   }
   // First Saturday: special workshop
   if(dow===6&&d<=7) evts.push({name:'Newcomer Introduction Workshop',time:'10:00 AM',loc:'Chicago Center',type:'special'});
@@ -1554,7 +1527,8 @@ const locations={
   lombard:{lat:41.871,lng:-88.009,name:'Lombard Center',addr:'Suite #104, 350 W 22nd St, Lombard, IL 60148',time:'Sundays 9 AM'},
   lincolnshire:{lat:42.168,lng:-87.910,name:'Lincolnshire Center',addr:'30 Riverwoods Rd, Lincolnshire, IL 60069',time:'Sundays 9 AM'},
   evanston:{lat:42.0497,lng:-87.6867,name:'Evanston Center',addr:'1030 Greenleaf Street, Evanston, IL 60202',time:'Sundays 9 AM'},
-  batavia:{lat:41.8503,lng:-88.3126,name:'Batavia Public Library',addr:'10 S. Batavia Ave, Batavia, IL 60510',time:'Sundays 1 PM'}
+  batavia:{lat:41.8503,lng:-88.3126,name:'Batavia Public Library',addr:'10 S. Batavia Ave, Batavia, IL 60510',time:'Sundays 1 PM'},
+  grayslake:{lat:42.3539,lng:-88.0584,name:'Hindu Mandir of Lake County',addr:'20444 W Peterson Rd, Grayslake, IL 60030',time:'Sundays 10:30 AM'}
 };
 let hfMarkers={};
 
