@@ -143,8 +143,7 @@ nav.inner-page{background:rgba(21,38,55,.96);backdrop-filter:blur(20px);-webkit-
 .hero-globe-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 40% 50%,#0a1628 0%,#071020 50%,#040c18 100%);display:flex;align-items:center;justify-content:center}
 #globeCanvas{width:100%;height:100%;display:block}
 @media(max-width:1024px){
-  .hero-globe-bg{background:radial-gradient(ellipse at 50% 40%,#0d2040 0%,#071528 50%,#040c18 100%)}
-  .hero-globe-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 15% 20%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 80% 15%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 45% 60%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 70% 75%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 25% 85%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 90% 45%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 55% 30%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 10% 55%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(2px 2px at 60% 10%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(2px 2px at 35% 40%,rgba(255,255,255,.3) 0%,transparent 100%)}
+  .hero-globe-bg{background:url('images/globe-still.jpg') center center/cover no-repeat}
   #globeCanvas{display:none}
 }
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity 1.2s ease}
@@ -901,7 +900,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
         <div class="about-ccard sr d2" onclick="go('sessions')" style="cursor:pointer">
           <div class="about-ccard-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--hf-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <h4>Session Times</h4>
-          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM<br>6 Locations across Chicagoland</p>
+          <p style="color:var(--g500);font-size:.92rem">Sundays 9 AM<br>7 Locations across Chicagoland</p>
         </div>
       </div>
       <div class="about-social sr" style="text-align:center;margin-top:60px;padding:40px 0 80px;">
@@ -951,7 +950,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="prac-num">02</div>
           <h3>Meditation</h3>
           <p>Suppose there is a divine light in your heart. With the gentle feeling of that light, the practice begins — and through pranahuti (yogic transmission), the experience deepens beyond what the mind can achieve alone.</p>
-          <p>This is what makes Heartfulness different from other meditation approaches. Our trained practitioners transmit during every session across all five Chicagoland locations.</p>
+          <p>This is what makes Heartfulness different from other meditation approaches. Our trained practitioners transmit during every session across all seven Chicagoland locations.</p>
           <div class="prac-checks">
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Unique yogic transmission (pranahuti)</div>
             <div class="prac-check"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Deep states from the very first session</div>
@@ -1076,6 +1075,13 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <p>Heartfulness meditation at the Hindu Mandir of Lake County in Grayslake. Everyone 15+ welcome, all levels. Free sessions every Sunday through June 28.</p>
           <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>20444 W Peterson Rd, Grayslake, IL 60030</span></div>
         </div>
+        <div class="scard sr d1">
+          <span class="badge" style="background:rgba(0,131,143,.12);color:#00838F">New · In-Person · Sundays &amp; Wednesdays</span>
+          <h3>Hyde Park Center</h3>
+          <div class="stime">9:00 AM <span style="font-size:.9rem;color:var(--g400)">&amp; 7:00 PM</span></div>
+          <p>New center in Hyde Park! Sunday morning sessions at 9 AM and Wednesday evening sessions at 7 PM. Group meditation with yogic transmission. All welcome, no signup needed.</p>
+          <div class="sloc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Hyde Park, Chicago, IL</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1091,6 +1097,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="lcard sr d3" onclick="focusMap('evanston')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Evanston Center</h4><p>1030 Greenleaf Street, Evanston, IL 60202</p></div></div>
           <div class="lcard sr d4" onclick="focusMap('batavia')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Batavia Public Library</h4><p>10 S. Batavia Ave, Batavia, IL 60510</p></div></div>
           <div class="lcard sr" onclick="focusMap('grayslake')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Hindu Mandir of Lake County</h4><p>20444 W Peterson Rd, Grayslake, IL 60030</p></div></div>
+          <div class="lcard sr d1" onclick="focusMap('hydepark')" style="cursor:pointer"><div class="lm"><svg width="20" height="20" viewBox="0 0 24 24" fill="#DC3232" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div><div><h4>Hyde Park Center <span style="font-size:.72rem;background:rgba(0,131,143,.1);color:#00838F;padding:2px 7px;border-radius:20px;font-weight:600;margin-left:4px">New</span></h4><p>Hyde Park, Chicago, IL</p></div></div>
         </div>
         <div class="map-f sr d1" id="map-container">
           <div id="leaflet-map" style="width:100%;height:100%;min-height:420px;border-radius:14px;z-index:1"></div>
@@ -1230,7 +1237,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <div class="ann-pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--hf-gold)" stroke="none"><path d="M16 2L7.5 10.5 2 12l10 10 1.5-5.5L22 8z"/></svg> Pinned</div>
           <div class="ann-date">Ongoing</div>
           <h3>Sunday Group Meditation — Every Week</h3>
-          <p>Join us every Sunday across 6 locations: Chicago, Lombard, Lincolnshire, Evanston, Batavia, and Grayslake. Guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
+          <p>Join us every Sunday across 7 locations: Chicago, Lombard, Lincolnshire, Evanston, Batavia, Grayslake, and Hyde Park. Guided group meditation with yogic transmission. Beginners welcome — no signup needed, just show up.</p>
           <div class="ann-tags"><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
         </div>
 
@@ -1253,6 +1260,13 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <h3>New: Heartfulness at Hindu Mandir of Lake County, Grayslake</h3>
           <p>Free Heartfulness meditation sessions every Sunday at the Hindu Mandir of Lake County (2nd floor Library). Everyone 15+ welcome, all levels. Find your balance, strength, and inner peace.</p>
           <div class="ann-meta">20444 W Peterson Rd, Grayslake, IL 60030 · Room: 2nd Floor Library</div>
+          <div class="ann-tags"><span class="ann-tag gold">New Location</span><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
+        </div>
+
+        <div class="ann-card sr d1">
+          <div class="ann-date">Now Open · Sundays 9 AM &amp; Wednesdays 7 PM</div>
+          <h3>New: Hyde Park Center Now Open!</h3>
+          <p>We're excited to announce a new Heartfulness meditation center in Hyde Park, Chicago! Join us for Sunday morning sessions at 9 AM and Wednesday evening sessions at 7 PM. Free, guided group meditation with yogic transmission — everyone welcome, no experience needed.</p>
           <div class="ann-tags"><span class="ann-tag gold">New Location</span><span class="ann-tag teal">Weekly</span><span class="ann-tag teal">In-Person</span></div>
         </div>
       </div>
@@ -1328,6 +1342,7 @@ footer ul a:hover{color:var(--hf-teal-light)}
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Evanston Center — 1030 Greenleaf Street, Evanston, IL 60202"><span>Evanston Center</span></label>
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Batavia Public Library — 10 S. Batavia Ave, Batavia, IL 60510"><span>Batavia Public Library</span></label>
           <label class="jm-loc"><input type="radio" name="jm-loc" value="Hindu Mandir of Lake County — 20444 W Peterson Rd, Grayslake, IL 60030"><span>Hindu Mandir of Lake County (Grayslake)</span></label>
+          <label class="jm-loc"><input type="radio" name="jm-loc" value="Hyde Park Center — Hyde Park, Chicago, IL"><span>Hyde Park Center <span style="font-size:.72rem;background:rgba(0,131,143,.1);color:#00838F;padding:1px 6px;border-radius:12px;font-weight:600;margin-left:4px">New</span></span></label>
         </div>
       </div>
       <form id="jm-form" onsubmit="jmSubmit(event)">
@@ -1422,10 +1437,15 @@ function getEventsForDate(y,m,d){
     evts.push({name:'Lombard Center Meditation',time:'9:00 AM',loc:'Lombard Center',type:'in-person'});
     evts.push({name:'Lincolnshire Center Meditation',time:'9:00 AM',loc:'Lincolnshire Center',type:'in-person'});
     evts.push({name:'Evanston Center Meditation',time:'9:00 AM',loc:'Evanston Center',type:'in-person'});
+    evts.push({name:'Hyde Park Center Meditation',time:'9:00 AM',loc:'Hyde Park Center',type:'in-person'});
     // Grayslake sessions (March 29 – June 28, 2026)
     if(dt>=new Date(2026,2,29)&&dt<=new Date(2026,5,28)){
       evts.push({name:'Hindu Mandir Grayslake Meditation',time:'10:30 AM',loc:'Hindu Mandir of Lake County',type:'in-person'});
     }
+  }
+  // Wednesday evenings — Hyde Park
+  if(dow===3){
+    evts.push({name:'Hyde Park Center Meditation',time:'7:00 PM',loc:'Hyde Park Center',type:'in-person'});
   }
   // First Saturday: special workshop
   if(dow===6&&d<=7) evts.push({name:'Newcomer Introduction Workshop',time:'10:00 AM',loc:'Chicago Center',type:'special'});
@@ -1564,7 +1584,8 @@ const locations={
   lincolnshire:{lat:42.168,lng:-87.910,name:'Lincolnshire Center',addr:'30 Riverwoods Rd, Lincolnshire, IL 60069',time:'Sundays 9 AM'},
   evanston:{lat:42.0497,lng:-87.6867,name:'Evanston Center',addr:'1030 Greenleaf Street, Evanston, IL 60202',time:'Sundays 9 AM'},
   batavia:{lat:41.8503,lng:-88.3126,name:'Batavia Public Library',addr:'10 S. Batavia Ave, Batavia, IL 60510',time:'Sundays 1 PM'},
-  grayslake:{lat:42.3539,lng:-88.0584,name:'Hindu Mandir of Lake County',addr:'20444 W Peterson Rd, Grayslake, IL 60030',time:'Sundays 10:30 AM'}
+  grayslake:{lat:42.3539,lng:-88.0584,name:'Hindu Mandir of Lake County',addr:'20444 W Peterson Rd, Grayslake, IL 60030',time:'Sundays 10:30 AM'},
+  hydepark:{lat:41.7943,lng:-87.5907,name:'Hyde Park Center',addr:'Hyde Park, Chicago, IL',time:'Sundays 9 AM · Wednesdays 7 PM'}
 };
 let hfMarkers={};
 
