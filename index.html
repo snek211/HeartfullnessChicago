@@ -7,6 +7,8 @@
 <meta name="description" content="Join Chicago's Heartfulness meditation community. Free group meditation sessions, workshops, and community events across Chicago, Lombard, and beyond.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -139,7 +141,11 @@ nav.inner-page{background:rgba(21,38,55,.96);backdrop-filter:blur(20px);-webkit-
    ============================================ */
 .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(21,38,55,.68) 0%,rgba(21,38,55,.52) 55%,rgba(21,38,55,.72) 100%);z-index:1}
+.hero-globe-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 40% 50%,#0a1628 0%,#071020 50%,#040c18 100%);display:flex;align-items:center;justify-content:center}
+#globeCanvas{width:100%;height:100%;display:block}
+.hero-video{opacity:0;transition:opacity 1s ease}
+.hero-video.loaded{opacity:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,12,24,.55) 0%,rgba(4,12,24,.35) 55%,rgba(4,12,24,.65) 100%);z-index:1}
 .hero-content{position:relative;z-index:2;padding:calc(var(--nav-total-h) + 80px) 28px 80px;max-width:780px;margin:0 auto}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(88,153,208,.2);border:1px solid rgba(88,153,208,.38);border-radius:50px;padding:6px 14px 6px 9px;font-size:.78rem;font-weight:600;color:#a8d4f0;margin-bottom:28px;width:fit-content;opacity:0;animation:fu .8s var(--ease) .2s forwards}
 .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--hf-teal);animation:dp 2s ease-in-out infinite}
@@ -430,9 +436,6 @@ footer ul a:hover{color:var(--hf-teal-light)}
   .hero-badge{margin-bottom:16px;padding:5px 12px}
   .hero-btns{flex-direction:column;align-items:center}
   .hero-btns .btn{width:100%;max-width:280px;justify-content:center}
-  /* Stats */
-  .stat-item{padding:10px 24px}
-  .stat-item strong{font-size:1.5rem}
   /* Features */
   .features{padding:48px 0}
   .feat-grid{grid-template-columns:1fr 1fr;gap:12px}
@@ -748,7 +751,10 @@ footer ul a:hover{color:var(--hf-teal-light)}
 <div class="page on" id="p-home">
 
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="images/WhatsApp%20Image%202026-04-04%20at%2011.53.48%20AM.jpeg">
+    <div class="hero-globe-bg" aria-hidden="true">
+      <canvas id="globeCanvas"></canvas>
+    </div>
+    <video class="hero-video" autoplay muted playsinline loop id="heroVideo">
       <source src="https://primary-assets.heartfulness.org/strapi-assets/meditation_day_f8ae2f77d0.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -765,13 +771,11 @@ footer ul a:hover{color:var(--hf-teal-light)}
 
   <!-- STATS BAR -->
   <div class="stats-bar">
-    <div class="container">
-      <div class="stats-inner">
-        <div class="stat-item"><strong>20M+</strong><span>Practitioners Worldwide</span></div>
-        <div class="stat-item"><strong>160+</strong><span>Countries</span></div>
-        <div class="stat-item"><strong>5K+</strong><span>Centers Globally</span></div>
-        <div class="stat-item"><strong>100%</strong><span>Free, Always</span></div>
-      </div>
+    <div class="stats-inner">
+      <div class="stat-item"><strong>20M+</strong><span>Practitioners</span></div>
+      <div class="stat-item"><strong>160+</strong><span>Countries</span></div>
+      <div class="stat-item"><strong>5K+</strong><span>Centers Globally</span></div>
+      <div class="stat-item"><strong>100%</strong><span>Free, Always</span></div>
     </div>
   </div>
 
@@ -1619,6 +1623,184 @@ const mapObs=new MutationObserver(()=>{
   }
 });
 mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+
+/* ===== HERO GLOBE SCROLL ANIMATION ===== */
+(function(){
+  gsap.registerPlugin(ScrollTrigger);
+  const vid = document.querySelector('.hero-video');
+  if(!vid) return;
+
+  vid.pause();
+  vid.currentTime = 0;
+
+  function initScrub(){
+    const dur = vid.duration || 15;
+    ScrollTrigger.create({
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      onUpdate: function(self){
+        vid.currentTime = self.progress * dur;
+      }
+    });
+  }
+
+  if(vid.readyState >= 1){
+    initScrub();
+  } else {
+    vid.addEventListener('loadedmetadata', initScrub, {once:true});
+  }
+})();
+
+/* ── Globe canvas fallback + video fade-in ─────────────────────── */
+(function(){
+  const canvas = document.getElementById('globeCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, R, angle = 0;
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+    H = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    cx = W/2; cy = H/2;
+    R = Math.min(W,H) * 0.34;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Simple continent outlines as lat/lng polygons (simplified)
+  const continents = [
+    // North America
+    [[60,-140],[60,-60],[25,-60],[15,-85],[20,-105],[30,-118],[40,-124],[50,-124],[60,-140]],
+    // South America
+    [[10,-75],[0,-50],[-15,-35],[-35,-55],[-55,-68],[-40,-72],[-20,-70],[-5,-78],[10,-75]],
+    // Europe
+    [[70,30],[60,30],[45,10],[43,0],[50,-5],[58,-5],[62,5],[68,15],[70,30]],
+    // Africa
+    [[35,10],[35,40],[0,42],[-35,18],[-35,25],[-20,35],[0,40],[15,42],[35,10]],
+    // Asia
+    [[70,30],[70,140],[55,140],[40,120],[20,120],[10,105],[5,100],[20,80],[30,65],[40,55],[55,35],[70,30]],
+    // Australia
+    [[-15,130],[-20,150],[-38,146],[-38,140],[-25,114],[-18,122],[-15,130]],
+  ];
+
+  function project(lat, lng, rot){
+    const phi = lat * Math.PI/180;
+    const lam = (lng + rot) * Math.PI/180;
+    const x = Math.cos(phi)*Math.sin(lam);
+    const y = Math.sin(phi);
+    const z = Math.cos(phi)*Math.cos(lam);
+    return {x: cx + R*x, y: cy - R*y, visible: z > 0};
+  }
+
+  function drawGlobe(){
+    ctx.clearRect(0,0,W,H);
+
+    // Deep space gradient background
+    const bg = ctx.createRadialGradient(cx,cy,0,cx,cy,R*1.6);
+    bg.addColorStop(0,'rgba(15,30,60,0)');
+    bg.addColorStop(1,'rgba(4,12,24,0)');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,W,H);
+
+    // Globe glow
+    const glow = ctx.createRadialGradient(cx-R*0.2,cy-R*0.2,R*0.1,cx,cy,R*1.1);
+    glow.addColorStop(0,'rgba(0,150,180,0.08)');
+    glow.addColorStop(0.6,'rgba(0,100,140,0.04)');
+    glow.addColorStop(1,'rgba(0,50,80,0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(cx,cy,R*1.1,0,Math.PI*2);
+    ctx.fill();
+
+    // Ocean
+    const ocean = ctx.createRadialGradient(cx-R*0.25,cy-R*0.25,R*0.05,cx,cy,R);
+    ocean.addColorStop(0,'#1a4a6e');
+    ocean.addColorStop(0.5,'#0d3354');
+    ocean.addColorStop(1,'#071e38');
+    ctx.beginPath();
+    ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.fillStyle = ocean;
+    ctx.fill();
+
+    // Latitude grid lines
+    ctx.strokeStyle = 'rgba(100,180,220,0.08)';
+    ctx.lineWidth = 0.7 * window.devicePixelRatio;
+    for(let lat=-60;lat<=60;lat+=30){
+      ctx.beginPath();
+      let first = true;
+      for(let lng=-180;lng<=180;lng+=4){
+        const p = project(lat,lng,angle);
+        if(!p.visible){first=true;continue;}
+        if(first){ctx.moveTo(p.x,p.y);first=false;}
+        else ctx.lineTo(p.x,p.y);
+      }
+      ctx.stroke();
+    }
+    // Longitude grid
+    for(let lng=0;lng<360;lng+=30){
+      ctx.beginPath();
+      let first=true;
+      for(let lat=-85;lat<=85;lat+=4){
+        const p = project(lat,lng,angle);
+        if(!p.visible){first=true;continue;}
+        if(first){ctx.moveTo(p.x,p.y);first=false;}
+        else ctx.lineTo(p.x,p.y);
+      }
+      ctx.stroke();
+    }
+
+    // Continents
+    ctx.fillStyle = 'rgba(0,180,160,0.55)';
+    ctx.strokeStyle = 'rgba(0,220,200,0.3)';
+    ctx.lineWidth = 1 * window.devicePixelRatio;
+    continents.forEach(poly=>{
+      const pts = poly.map(([la,ln])=>project(la,ln,angle));
+      if(!pts.some(p=>p.visible)) return;
+      ctx.beginPath();
+      let first=true;
+      pts.forEach(p=>{
+        if(!p.visible){first=true;return;}
+        if(first){ctx.moveTo(p.x,p.y);first=false;}
+        else ctx.lineTo(p.x,p.y);
+      });
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+    });
+
+    // Atmosphere rim
+    const rim = ctx.createRadialGradient(cx,cy,R*0.9,cx,cy,R*1.08);
+    rim.addColorStop(0,'rgba(0,160,200,0)');
+    rim.addColorStop(0.5,'rgba(0,160,200,0.08)');
+    rim.addColorStop(1,'rgba(0,120,180,0.0)');
+    ctx.beginPath();
+    ctx.arc(cx,cy,R*1.08,0,Math.PI*2);
+    ctx.fillStyle = rim;
+    ctx.fill();
+
+    // Specular highlight
+    const spec = ctx.createRadialGradient(cx-R*0.35,cy-R*0.35,0,cx-R*0.1,cy-R*0.1,R*0.7);
+    spec.addColorStop(0,'rgba(255,255,255,0.07)');
+    spec.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.beginPath();
+    ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.fillStyle = spec;
+    ctx.fill();
+
+    angle += 0.18;
+    requestAnimationFrame(drawGlobe);
+  }
+  drawGlobe();
+
+  // Fade in video once it can play
+  const video = document.getElementById('heroVideo');
+  if(video){
+    const fadeIn = ()=>video.classList.add('loaded');
+    if(video.readyState >= 3) fadeIn();
+    else video.addEventListener('canplay', fadeIn, {once:true});
+  }
+})();
 </script>
 </body>
 </html>
