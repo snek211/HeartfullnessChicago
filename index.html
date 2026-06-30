@@ -140,13 +140,12 @@ nav.inner-page{background:rgba(21,38,55,.96);backdrop-filter:blur(20px);-webkit-
    HOME — HERO (full-screen video)
    ============================================ */
 .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hero-globe-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 40% 50%,#0a1628 0%,#071020 50%,#040c18 100%);display:flex;align-items:center;justify-content:center}
 #globeCanvas{width:100%;height:100%;display:block}
-.hero-video{opacity:0;transition:opacity 1s ease}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity 1.2s ease}
 .hero-video.loaded{opacity:1}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,12,24,.55) 0%,rgba(4,12,24,.35) 55%,rgba(4,12,24,.65) 100%);z-index:1}
-.hero-content{position:relative;z-index:2;padding:calc(var(--nav-total-h) + 80px) 28px 80px;max-width:780px;margin:0 auto}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,12,24,.55) 0%,rgba(4,12,24,.35) 55%,rgba(4,12,24,.65) 100%);z-index:2}
+.hero-content{position:relative;z-index:3;padding:calc(var(--nav-total-h) + 80px) 28px 80px;max-width:780px;margin:0 auto}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(88,153,208,.2);border:1px solid rgba(88,153,208,.38);border-radius:50px;padding:6px 14px 6px 9px;font-size:.78rem;font-weight:600;color:#a8d4f0;margin-bottom:28px;width:fit-content;opacity:0;animation:fu .8s var(--ease) .2s forwards}
 .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--hf-teal);animation:dp 2s ease-in-out infinite}
 @keyframes dp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
@@ -1660,13 +1659,15 @@ mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['cla
   let W, H, cx, cy, R, angle = 0;
 
   function resize(){
-    W = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-    H = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    const rect = canvas.getBoundingClientRect();
+    W = canvas.width = (rect.width || window.innerWidth) * window.devicePixelRatio;
+    H = canvas.height = (rect.height || window.innerHeight) * window.devicePixelRatio;
     cx = W/2; cy = H/2;
     R = Math.min(W,H) * 0.34;
   }
-  resize();
-  window.addEventListener('resize', resize);
+  // Wait for layout before measuring
+  requestAnimationFrame(()=>{requestAnimationFrame(()=>{resize();drawGlobe();});});
+  window.addEventListener('resize', ()=>{resize();});
 
   // Simple continent outlines as lat/lng polygons (simplified)
   const continents = [
@@ -1791,7 +1792,6 @@ mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['cla
     angle += 0.18;
     requestAnimationFrame(drawGlobe);
   }
-  drawGlobe();
 
   // Fade in video once it can play
   const video = document.getElementById('heroVideo');
