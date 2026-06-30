@@ -1651,23 +1651,20 @@ mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['cla
   }
 })();
 
-/* ── Globe canvas fallback + video fade-in ─────────────────────── */
+/* ── Globe canvas + video ─────────────────────── */
 (function(){
   const canvas = document.getElementById('globeCanvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, cx, cy, R, angle = 0;
+  let W=0, H=0, cx=0, cy=0, R=0, angle=0, running=false;
 
   function resize(){
-    const rect = canvas.getBoundingClientRect();
-    W = canvas.width = (rect.width || window.innerWidth) * window.devicePixelRatio;
-    H = canvas.height = (rect.height || window.innerHeight) * window.devicePixelRatio;
+    W = canvas.width = window.innerWidth * window.devicePixelRatio;
+    H = canvas.height = window.innerHeight * window.devicePixelRatio;
     cx = W/2; cy = H/2;
     R = Math.min(W,H) * 0.34;
   }
-  // Wait for layout before measuring
-  requestAnimationFrame(()=>{requestAnimationFrame(()=>{resize();drawGlobe();});});
-  window.addEventListener('resize', ()=>{resize();});
+  window.addEventListener('resize', resize);
 
   // Simple continent outlines as lat/lng polygons (simplified)
   const continents = [
@@ -1695,6 +1692,7 @@ mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['cla
   }
 
   function drawGlobe(){
+    if(!R){ angle+=0.18; requestAnimationFrame(drawGlobe); return; }
     ctx.clearRect(0,0,W,H);
 
     // Deep space gradient background
@@ -1793,12 +1791,28 @@ mapObs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['cla
     requestAnimationFrame(drawGlobe);
   }
 
-  // Fade in video once it can play
+  // Start globe immediately
+  resize();
+  drawGlobe();
+
+  // Try to play video — fade it in if it works, hide it if blocked (mobile)
   const video = document.getElementById('heroVideo');
   if(video){
-    const fadeIn = ()=>video.classList.add('loaded');
-    if(video.readyState >= 3) fadeIn();
-    else video.addEventListener('canplay', fadeIn, {once:true});
+    const tryPlay = ()=>{
+      const p = video.play();
+      if(p && p.then){
+        p.then(()=>{
+          // Playing — fade in over the globe
+          video.addEventListener('canplaythrough', ()=>video.classList.add('loaded'), {once:true});
+          if(video.readyState >= 4) video.classList.add('loaded');
+        }).catch(()=>{
+          // Blocked (iOS low power mode, etc) — hide video, keep globe spinning
+          video.style.display = 'none';
+        });
+      }
+    };
+    if(document.readyState === 'complete') tryPlay();
+    else window.addEventListener('load', tryPlay, {once:true});
   }
 })();
 </script>
