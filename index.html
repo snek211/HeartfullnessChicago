@@ -143,8 +143,9 @@ nav.inner-page{background:rgba(21,38,55,.96);backdrop-filter:blur(20px);-webkit-
 .hero-globe-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 40% 50%,#0a1628 0%,#071020 50%,#040c18 100%);display:flex;align-items:center;justify-content:center}
 #globeCanvas{width:100%;height:100%;display:block}
 @media(max-width:1024px){
-  .hero-globe-bg{background:url('images/globe-still.jpg') center center/cover no-repeat}
+  .hero-globe-bg{background:url('images/globe-still.jpg') center center/cover no-repeat;background-color:#071020}
   #globeCanvas{display:none}
+  .hero-video{display:none}
 }
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity 1.2s ease}
 .hero-video.loaded{opacity:1}
