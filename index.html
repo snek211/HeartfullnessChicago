@@ -670,6 +670,37 @@ footer ul a:hover{color:var(--hf-teal-light)}
 .ann-tag.cyan{background:rgba(77,208,225,.1);color:#0097A7}
 .ann-tag.gold{background:rgba(200,150,50,.1);color:var(--hf-gold)}
 
+/* ============================================
+   FEATURED EVENT BANNER
+   ============================================ */
+.featured-event{background:linear-gradient(135deg,#0a1f3d 0%,#0d2a4a 50%,#0a1f3d 100%);border-top:3px solid var(--hf-gold);border-bottom:1px solid rgba(200,150,50,.2);padding:0}
+.fe-inner{max-width:1100px;margin:0 auto;padding:36px 40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.fe-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,150,50,.15);border:1px solid rgba(200,150,50,.4);border-radius:50px;padding:5px 14px;font-size:.72rem;font-weight:700;color:var(--hf-gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.fe-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--hf-gold);animation:dp 2s ease-in-out infinite}
+.fe-inner h2{font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,2rem);color:white;font-weight:500;margin-bottom:8px;line-height:1.2}
+.fe-inner h2 em{color:var(--hf-teal-light);font-style:italic}
+.fe-tagline{font-size:.95rem;color:rgba(255,255,255,.7);margin-bottom:18px;font-weight:300}
+.fe-details{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.fe-detail{display:flex;align-items:center;gap:7px;font-size:.85rem;color:rgba(255,255,255,.8)}
+.fe-detail svg{flex-shrink:0;opacity:.7}
+.fe-schedule{display:flex;gap:16px;flex-wrap:wrap}
+.fe-time{font-size:.78rem;color:rgba(255,255,255,.6);padding:6px 12px;background:rgba(255,255,255,.06);border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+.fe-time strong{color:rgba(255,255,255,.9);font-weight:600}
+.fe-cta{display:flex;flex-direction:column;align-items:center;gap:12px;flex-shrink:0}
+.fe-date-box{background:var(--hf-gold);border-radius:16px;padding:16px 24px;text-align:center;min-width:100px}
+.fe-date-box .fe-month{font-size:.72rem;font-weight:700;color:rgba(10,31,61,.8);text-transform:uppercase;letter-spacing:.1em}
+.fe-date-box .fe-day{font-size:2.6rem;font-weight:700;color:#0a1f3d;line-height:1;font-family:var(--font-display)}
+.fe-date-box .fe-dow{font-size:.72rem;font-weight:600;color:rgba(10,31,61,.7);text-transform:uppercase;letter-spacing:.05em}
+.fe-btn{background:var(--hf-teal);color:white;border:none;border-radius:50px;padding:12px 24px;font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;text-align:center;transition:all .2s ease}
+.fe-btn:hover{background:#00979f;transform:translateY(-1px)}
+.fe-free{font-size:.72rem;color:rgba(255,255,255,.5);text-align:center}
+@media(max-width:768px){
+  .fe-inner{grid-template-columns:1fr;gap:24px;padding:28px 20px}
+  .fe-cta{flex-direction:row;justify-content:flex-start}
+  .fe-date-box{min-width:80px;padding:12px 18px}
+  .fe-date-box .fe-day{font-size:2rem}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .loader img{animation:none}
@@ -780,6 +811,43 @@ footer ul a:hover{color:var(--hf-teal-light)}
       <div class="stat-item"><strong>160+</strong><span>Countries</span></div>
       <div class="stat-item"><strong>5K+</strong><span>Centers Globally</span></div>
       <div class="stat-item"><strong>100%</strong><span>Free, Always</span></div>
+    </div>
+  </div>
+
+  <!-- FEATURED EVENT -->
+  <div class="featured-event">
+    <div class="fe-inner">
+      <div>
+        <div class="fe-badge"><span class="fe-badge-dot"></span> Special Event · July 25</div>
+        <h2>Finding Calm in the Chaos,<br><em>Discover Heartfulness Meditation</em></h2>
+        <p class="fe-tagline">Pause. Breathe. Connect. — A free intro event open to everyone.</p>
+        <div class="fe-details">
+          <div class="fe-detail">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            10:00 AM – 12:00 PM
+          </div>
+          <div class="fe-detail">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            National India Hub, Schaumburg, IL
+          </div>
+        </div>
+        <div class="fe-schedule">
+          <span class="fe-time"><strong>10:00</strong> Meet &amp; Greet</span>
+          <span class="fe-time"><strong>10:30</strong> Intro to Meditation</span>
+          <span class="fe-time"><strong>11:00</strong> Meditation</span>
+          <span class="fe-time"><strong>11:30</strong> Guest Speaker</span>
+          <span class="fe-time"><strong>12:00</strong> Lunch</span>
+        </div>
+      </div>
+      <div class="fe-cta">
+        <div class="fe-date-box">
+          <div class="fe-month">July</div>
+          <div class="fe-day">25</div>
+          <div class="fe-dow">Saturday</div>
+        </div>
+        <a href="https://heartfulness.org" target="_blank" rel="noopener" class="fe-btn">Learn More</a>
+        <span class="fe-free">Admission is Free · All Welcome</span>
+      </div>
     </div>
   </div>
 
@@ -1233,6 +1301,16 @@ footer ul a:hover{color:var(--hf-teal-light)}
   <section class="ann-section">
     <div class="container">
       <div class="ann-grid">
+        <!-- Featured special event -->
+        <div class="ann-card sr" style="border-left:4px solid var(--hf-gold);background:linear-gradient(135deg,rgba(200,150,50,.04),transparent)">
+          <div class="ann-pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--hf-gold)" stroke="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg> Special Event</div>
+          <div class="ann-date">Saturday, July 25 · 10:00 AM – 12:00 PM</div>
+          <h3>Finding Calm in the Chaos — Discover Heartfulness Meditation</h3>
+          <p>A free introductory event open to everyone. Experience guided relaxation and meditation with yogic transmission. Schedule: Meet &amp; Greet (10 AM) → Intro to Meditation (10:30) → Meditation Session (11:00) → Guest Speaker (11:30) → Lunch (12:00).</p>
+          <div class="ann-meta">National India Hub, Third Floor · 930 National Pkwy, Schaumburg, IL 60173 · Admission is Free</div>
+          <div class="ann-tags"><span class="ann-tag gold">Special Event</span><span class="ann-tag teal">In-Person</span><span class="ann-tag teal">Free</span><span class="ann-tag cyan">All Welcome</span></div>
+        </div>
+
         <!-- Pinned announcement -->
         <div class="ann-card pinned sr">
           <div class="ann-pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--hf-gold)" stroke="none"><path d="M16 2L7.5 10.5 2 12l10 10 1.5-5.5L22 8z"/></svg> Pinned</div>
@@ -1450,6 +1528,8 @@ function getEventsForDate(y,m,d){
   }
   // First Saturday: special workshop
   if(dow===6&&d<=7) evts.push({name:'Newcomer Introduction Workshop',time:'10:00 AM',loc:'Chicago Center',type:'special'});
+  // July 25 special event
+  if(y===2026&&m===6&&d===25) evts.push({name:'Finding Calm in the Chaos — Discover Heartfulness Meditation',time:'10:00 AM',loc:'National India Hub, Schaumburg',type:'special'});
   return evts;
 }
 
